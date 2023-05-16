@@ -72,12 +72,6 @@ if (
   } else {
     header("Location: ../login.php");
     exit;
-<<<<<<< HEAD
-  } else {
-	header("Location: ../login.php");
-	exit;
-} 
-=======
   }
 } else {
   header("Location: ../login.php");
@@ -85,4 +79,3 @@ if (
 }
 
 ?>
->>>>>>> 255f8bf988d3f20c7b4bc897e26f2a2e31db52e2
