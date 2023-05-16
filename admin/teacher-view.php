@@ -71,17 +71,6 @@ if (isset($_SESSION['admin_id']) &&
                      $c = '';
                      $classes = str_split(trim($teacher['class']));
 
-                     foreach ($classes as $class_id) {
-                         $class = getClassById($class_id, $conn);
-
-                        $c_temp = getGradeById($class['grade'], $conn);
-                        $section = getSectioById($class['section'], $conn);
-                        if ($c_temp != 0) 
-                          $c .=$c_temp['grade_code'].'-'.
-                               $c_temp['grade'].$section['section'].', ';
-                     }
-                     echo $c;
-
                   ?>
             </li>
             
