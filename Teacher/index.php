@@ -7,7 +7,6 @@ if (isset($_SESSION['teacher_id']) &&
        include "../DB_connection.php";
        include "data/teacher.php";
        include "data/subject.php";
-       include "data/grade.php";
        include "data/section.php";
        include "data/class.php";
 
@@ -73,11 +72,10 @@ if (isset($_SESSION['teacher_id']) &&
                      foreach ($classes as $class_id) {
                          $class = getClassById($class_id, $conn);
 
-                        $c_temp = getGradeById($class['grade'], $conn);
+                        
                         $section = getSectioById($class['section'], $conn);
-                        if ($c_temp != 0) 
-                          $c .=$c_temp['grade_code'].'-'.
-                               $c_temp['grade'].$section['section'].', ';
+                        
+                        
                      }
                      echo $c;
 

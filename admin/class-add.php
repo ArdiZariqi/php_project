@@ -5,9 +5,7 @@ if (isset($_SESSION['admin_id']) &&
 
     if ($_SESSION['role'] == 'Admin') {
        include '../DB_connection.php';
-       include 'data/grade.php';
        include 'data/section.php';
-       $grades = getAllGrades($conn);
        $sections = getAllSections($conn);
 
  ?>
@@ -26,7 +24,7 @@ if (isset($_SESSION['admin_id']) &&
 <body>
     <?php 
         include "inc/navbar.php";
-        if ($sections == 0 || $grades == 0) { ?>
+        if ($sections == 0 ) { ?>
            
           <div class="alert alert-info" role="alert">
            First create section and class
@@ -52,18 +50,6 @@ if (isset($_SESSION['admin_id']) &&
            <?=$_GET['success']?>
           </div>
         <?php } ?>
-        <div class="mb-3">
-          <label class="form-label">Grade</label>
-          <select name="grade"
-                  class="form-control" >
-                  <?php foreach ($grades as $grade) { ?>
-                    <option value="<?=$grade['grade_id']?>">
-                       <?=$grade['grade_code'].'-'.$grade['grade']?>
-                    </option> 
-                  <?php } ?>
-                  
-          </select>
-        </div>
         <div class="mb-3">
           <label class="form-label">Section</label>
           <select name="section"

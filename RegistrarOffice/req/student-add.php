@@ -17,8 +17,7 @@ if (isset($_POST['fname']) &&
     isset($_POST['parent_fname'])  &&
     isset($_POST['parent_lname'])  &&
     isset($_POST['parent_phone_number']) &&
-    isset($_POST['section']) &&
-    isset($_POST['grade'])) {
+    isset($_POST['section'])) {
     
     include '../../DB_connection.php';
     include "../data/student.php";
@@ -36,7 +35,7 @@ if (isset($_POST['fname']) &&
     $parent_lname = $_POST['parent_lname'];
     $parent_phone_number = $_POST['parent_phone_number'];
 
-    $grade = $_POST['grade'];
+    
     $section = $_POST['section'];
     
 
@@ -98,10 +97,10 @@ if (isset($_POST['fname']) &&
         // hashing the password
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         $sql  = "INSERT INTO
-                 students(username, password, fname, lname, grade, section, address, gender, email_address, date_of_birth, parent_fname, parent_lname, parent_phone_number)
+                 students(username, password, fname, lname,  section, address, gender, email_address, date_of_birth, parent_fname, parent_lname, parent_phone_number)
                  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$uname, $pass, $fname, $lname, $grade, $section, $address, $gender, $email_address, $date_of_birth, $parent_fname, $parent_lname, $parent_phone_number]);
+        $stmt->execute([$uname, $pass, $fname, $lname,  $section, $address, $gender, $email_address, $date_of_birth, $parent_fname, $parent_lname, $parent_phone_number]);
         $sm = "New student registered successfully";
         header("Location: ../student-add.php?success=$sm");
         exit;

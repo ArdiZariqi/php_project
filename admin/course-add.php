@@ -5,8 +5,6 @@ if (isset($_SESSION['admin_id']) &&
 
     if ($_SESSION['role'] == 'Admin') {
       include '../DB_connection.php';
-      include 'data/grade.php';
-      $grades = getAllGrades($conn);
 
  ?>
 <!DOCTYPE html>
@@ -28,11 +26,6 @@ if (isset($_SESSION['admin_id']) &&
      <div class="container mt-5">
         <a href="course.php"
            class="btn btn-dark">Go Back</a> <br><br>
-        <?php if ($grades == 0) { ?>
-          <div class="alert alert-info" role="alert">
-           First create grade.
-          </div>
-        <?php }else{ ?>
 
         <form method="post"
               class="shadow p-3 mt-5 form-w" 
@@ -62,18 +55,7 @@ if (isset($_SESSION['admin_id']) &&
                  class="form-control"
                  name="course_code">
         </div>
-        <div class="mb-3">
-          <label class="form-label">Grade</label>
-          <select name="grade"
-                  class="form-control" >
-                  <?php foreach ($grades as $grade) { ?>
-                    <option value="<?=$grade['grade_id']?>">
-                       <?=$grade['grade_code'].'-'.$grade['grade']?>
-                    </option> 
-                  <?php } ?>
-                  
-          </select>
-        </div>
+
       <button type="submit" class="btn btn-primary">Create</button>
      </form>
      </div>
@@ -94,8 +76,7 @@ if (isset($_SESSION['admin_id']) &&
   }else {
     header("Location: ../login.php");
     exit;
-  } 
-}else {
+  } else {
 	header("Location: ../login.php");
 	exit;
 } 

@@ -6,7 +6,6 @@ if (isset($_SESSION['teacher_id']) &&
     if ($_SESSION['role'] == 'Teacher') {
        include "../DB_connection.php";
        include "data/student.php";
-       include "data/grade.php";
        include "data/class.php";
        include "data/section.php";
        if (!isset($_GET['class_id'])) {
@@ -39,9 +38,9 @@ if (isset($_SESSION['teacher_id']) &&
      ?>
      
   <?php $i = 0; foreach ($students as $student ) { 
-       $g = getGradeById($class['grade'], $conn);
+    
        $s = getSectioById($class['section'], $conn);
-       if ($g['grade_id'] == $student['grade'] && $s['section_id'] == $student['section']) { $i++; 
+       if ( $s['section_id'] == $student['section']) { $i++; 
        if ($i == 1) { 
         $check++;
     ?>
@@ -55,7 +54,6 @@ if (isset($_SESSION['teacher_id']) &&
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Grade</th>
                   </tr>
                 </thead>
                 <tbody>  
@@ -64,22 +62,11 @@ if (isset($_SESSION['teacher_id']) &&
                     <th scope="row"><?=$i?></th>
                     <td><?=$student['student_id']?></td>
                     <td>
-                      <a href="student-grade.php?student_id=<?=$student['student_id']?>">
                         <?=$student['fname']?>
                       </a>
                     </td>
                     <td><?=$student['lname']?></td>
                     <td><?=$student['username']?></td>
-                    <td>
-                      <?php 
-                           $grade = $student['grade'];
-                           $g_temp = getGradeById($grade, $conn);
-                           if ($g_temp != 0) {
-                              echo $g_temp['grade_code'].'-'.
-                                     $g_temp['grade'];
-                            }
-                        ?>
-                    </td>
                   </tr>
                 <?php } } ?>
                 </tbody>
