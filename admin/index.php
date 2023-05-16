@@ -19,8 +19,8 @@ if (isset($_SESSION['admin_id']) &&
   <style>   
       .container {
           max-width: 900px;
-          margin: 0 auto;
-          padding: 20px;
+          margin: auto;
+          padding: 10px;
       }
 
       .row-cols-5 {
