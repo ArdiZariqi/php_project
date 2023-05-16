@@ -21,9 +21,6 @@
           <a class="nav-link" href="students.php">Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="students.php">Students Grade</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="pass.php">Change Password</a>
         </li>
 
