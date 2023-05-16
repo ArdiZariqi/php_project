@@ -59,8 +59,7 @@ if (isset($_SESSION['admin_id']) &&
       <button type="submit" class="btn btn-primary">Create</button>
      </form>
      </div>
-     <?php } ?>
-
+    
      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
     <script>
