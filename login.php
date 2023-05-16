@@ -11,19 +11,20 @@
 </head>
 
 <body class="body-login">
-	<div class="black-fill"><br /> <br />
+	<div class="black-fill"><br /><br />
 		<div class="d-flex justify-content-center align-items-center flex-column">
 			<form class="login" method="post" action="req/login.php">
 
 				<div class="text-center">
 					<img src="Logo 1_a v5.png" width="200">
 				</div>
-				<h2 style="text-align: center;">LOGIN</h2>
+				<h2 style="text-align: center;" class="fw-bold fst-italic">Login</h2>
 				<?php if (isset($_GET['error'])) { ?>
 					<div class="alert alert-danger" role="alert">
 						<?= $_GET['error'] ?>
 					</div>
 				<?php } ?>
+
 				<div class="mb-3">
 					<label class="form-label">Username</label>
 					<input type="text" class="form-control" name="uname">
@@ -32,10 +33,9 @@
 				<div class="mb-3">
 					<label class="form-label">Password</label>
 					<input type="password" class="form-control" name="pass">
-					<a href="forgot_password.php" class="text-decoration-none">Forgot Password?</a>
+					<a href="forgotPw.php" class="text-decoration-none">Forgot Password?</a>
 				</div>
-
-				<div class="mb-3">
+				<div class="mb-5">
 					<label class="form-label">Login As</label>
 					<select class="form-control" name="role">
 						<option value="1">Admin</option>
@@ -44,13 +44,8 @@
 						<option value="4">Registrar Office</option>
 					</select>
 				</div>
-
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary" style="width: 200px;">Login</button>
-				</div>
-
-				<div class="text-center mt-2">
-					<p>Don't have an account? <a href="register.php" class="text-decoration-none">Register here</a></p>
+				<div class="text-center mb-5">
+					<button type="submit" class="btn btn-primary fw-bold fst-italic" style="width: 300px; height: 50px;">Login</button>
 				</div>
 			</form>
 
