@@ -24,7 +24,6 @@ if (isset($_SESSION['admin_id']) &&
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-  
 		.container {
 			max-width: 800px;
 			margin: 0 auto;
@@ -82,7 +81,6 @@ if (isset($_SESSION['admin_id']) &&
 			color: #fff;
 		}
 	</style>
-
   </head>
 <body>
     <?php 

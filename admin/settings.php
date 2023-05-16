@@ -19,6 +19,30 @@ if (isset($_SESSION['admin_id']) &&
 	<link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+		.form-w {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #f8f9fa;
+			padding: 20px;
+			border-radius: 5px;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn-primary:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+
+		.alert {
+			margin-bottom: 10px;
+		}
+	</style>
+
 </head>
 <body>
     <?php 
@@ -78,7 +102,6 @@ if (isset($_SESSION['admin_id']) &&
               Update</button>
      </form>
  </div>
-     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
     <script>
         $(document).ready(function(){
