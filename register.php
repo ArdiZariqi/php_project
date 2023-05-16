@@ -15,22 +15,26 @@
         <div class="d-flex justify-content-center align-items-center flex-column">
             <form class="login" method="post" action="req/register.php">
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <img src="Logo 1_a v5.png" width="200">
-                </div>
-                <h2 style="text-align: center;">REGISTER</h2>
+                </div> -->
+                <h2 style="text-align: center;" class="mt-4 mb-4 fw-bold fst-italic">Create account</h2>
                 <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
                         <?= $_GET['error'] ?>
                     </div>
                 <?php } ?>
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
                     <input type="text" class="form-control" name="uname">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
@@ -51,7 +55,7 @@
                     </select>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary" style="width: 200px;">Register</button>
+                    <button type="submit" name="register_btn" class="btn btn-primary fw-bold fst-italic" style="width: 300px; height: 50px;">Create Account</button>
                 </div>
 
                 <div class="text-center mt-2">

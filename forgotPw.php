@@ -16,9 +16,9 @@
 			<form class="login" method="post" action="req/login.php">
 
 				<div class="text-center">
-					<img src="Logo 1_a v5.png" width="200">
+					<img src="Logo 1_a v5.png" width="200" height="200">
 				</div>
-				<h2 style="text-align: center;">LOGIN</h2>
+				<h2 style="text-align: center;">Verify account</h2>
 				<?php if (isset($_GET['error'])) { ?>
 					<div class="alert alert-danger" role="alert">
 						<?= $_GET['error'] ?>
@@ -30,17 +30,15 @@
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">Password</label>
-					<input type="password" class="form-control" name="pass">
-					<a href="forgot_password.php" class="text-decoration-none">Forgot Password?</a>
+					<label class="form-label">email</label>
+					<input type="email" class="form-control" name="pass">
 				</div>
 
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary" style="width: 200px;">Change password</button>
+					<button type="submit" class="btn btn-primary" style="width: 200px;">Verify account</button>
 				</div>
 
 				<div class="text-center mt-2">
-					<p>Don't have an account? <a href="register.php" class="text-decoration-none">Register here</a></p>
 				</div>
 			</form>
 
