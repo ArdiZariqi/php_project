@@ -6,9 +6,7 @@ if (isset($_SESSION['r_user_id']) &&
     if ($_SESSION['role'] == 'Registrar Office') {
       
        include "../DB_connection.php";
-       include "data/grade.php";
        include "data/section.php";
-       $grades = getAllGrades($conn);
        $sections = getAllSections($conn);
 
 
@@ -148,19 +146,6 @@ if (isset($_SESSION['r_user_id']) &&
                  value="<?=$ppn?>"
                  name="parent_phone_number">
         </div><br><hr>
-        <div class="mb-3">
-          <label class="form-label">Grade</label>
-          <div class="row row-cols-5">
-            <?php foreach ($grades as $grade): ?>
-            <div class="col">
-              <input type="radio"
-                     name="grade"
-                     value="<?=$grade['grade_id']?>">
-                     <?=$grade['grade_code']?>-<?=$grade['grade']?>
-            </div>
-            <?php endforeach ?>
-             
-          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Section</label>

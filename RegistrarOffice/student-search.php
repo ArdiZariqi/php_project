@@ -9,7 +9,6 @@ if (isset($_SESSION['r_user_id']) &&
        $search_key = $_GET['searchKey'];
        include "../DB_connection.php";
        include "data/student.php";
-       include "data/grade.php";
        $students = searchStudents($search_key, $conn);
  ?>
 <!DOCTYPE html>
@@ -72,7 +71,6 @@ if (isset($_SESSION['r_user_id']) &&
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Grade</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -89,16 +87,6 @@ if (isset($_SESSION['r_user_id']) &&
                     </td>
                     <td><?=$student['lname']?></td>
                     <td><?=$student['username']?></td>
-                    <td>
-                      <?php 
-                           $grade = $student['grade'];
-                           $g_temp = getGradeById($grade, $conn);
-                           if ($g_temp != 0) {
-                              echo $g_temp['grade_code'].'-'.
-                                     $g_temp['grade'];
-                            }
-                        ?>
-                    </td>
                     <td>
                         <a href="student-edit.php?student_id=<?=$student['student_id']?>"
                            class="btn btn-warning">Edit</a>

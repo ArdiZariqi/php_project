@@ -51,7 +51,7 @@ if (isset($_SESSION['admin_id']) &&
                     <th scope="col">#</th>
                     <th scope="col">Course</th>
                     <th scope="col">Course Code</th>
-                    <th scope="col">Grade</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -67,12 +67,6 @@ if (isset($_SESSION['admin_id']) &&
                     <td>
                       <?php 
                           echo $course['subject_code'];
-                       ?>
-                    </td>
-                    <td>
-                      <?php 
-                          $grade = getGradeById($course['grade'], $conn);
-                          echo $grade['grade_code'].'-'.$grade['grade'];
                        ?>
                     </td>
                     <td>

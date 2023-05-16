@@ -8,11 +8,9 @@ if (isset($_SESSION['admin_id']) &&
       
        include "../DB_connection.php";
        include "data/class.php";
-       include "data/grade.php";
        include "data/section.php";
 
        $class = getClassById($_GET['class_id'], $conn);
-       $grades = getAllGrades($conn);
        $sections = getAllSections($conn);
        
 
@@ -57,25 +55,6 @@ if (isset($_SESSION['admin_id']) &&
            <?=$_GET['success']?>
           </div>
         <?php } ?>
-        <div class="mb-3">
-          <label class="form-label">Grade</label>
-          <select name="grade"
-                  class="form-control" >
-                  <?php foreach ($grades as $grade) { 
-                     $selected = 0;
-                     if ($grade['grade_id'] == $class['grade'] ) {
-                       $selected = 1;
-                     }
-                  ?>
-
-                    <option  value="<?=$grade['grade_id']?>"
-                          <?php if ($selected) echo "selected"; ?> >
-                       <?=$grade['grade_code'].'-'.$grade['grade']?>
-                    </option> 
-                  <?php } ?>
-                  
-          </select>
-        </div>
         <div class="mb-3">
           <label class="form-label">Section</label>
           <select name="section"
