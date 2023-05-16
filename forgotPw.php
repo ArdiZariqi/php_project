@@ -35,18 +35,8 @@
 					<a href="forgot_password.php" class="text-decoration-none">Forgot Password?</a>
 				</div>
 
-				<div class="mb-3">
-					<label class="form-label">Login As</label>
-					<select class="form-control" name="role">
-						<option value="1">Admin</option>
-						<option value="2">Teacher</option>
-						<option value="3">Student</option>
-						<option value="4">Registrar Office</option>
-					</select>
-				</div>
-
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary" style="width: 200px;">Login</button>
+					<button type="submit" class="btn btn-primary" style="width: 200px;">Change password</button>
 				</div>
 
 				<div class="text-center mt-2">
