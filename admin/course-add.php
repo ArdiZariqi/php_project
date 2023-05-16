@@ -71,11 +71,14 @@ if (isset($_SESSION['admin_id']) &&
 
 </body>
 </html>
-<?php 
+<?php
 
-  }else {
-    header("Location: ../login.php");
-    exit;
-  }
-
+}else {
+  header("Location: course.php");
+  exit;
+} 
+}else {
+header("Location: course.php");
+exit;
+} 
 ?>
