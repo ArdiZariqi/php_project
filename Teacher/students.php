@@ -24,7 +24,52 @@ if (isset($_SESSION['teacher_id']) &&
     <link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <style> 
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .n-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+      }
+      
+      .n-table th,
+      .n-table td {
+        padding: 12px;
+        text-align: center;
+      }
+      
+      .n-table th {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+      }
+      
+      .n-table td {
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .alert {
+        max-width: 450px;
+        margin: 5rem auto;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        color: #333333;
+      }
+      
+      .alert-info {
+        background-color: #e7f0fd;
+        border-color: #d0e5fc;
+        color: #084a8c;
+      }
+    </style>
+  </head>
 <body>
     <?php 
         include "inc/navbar.php";
