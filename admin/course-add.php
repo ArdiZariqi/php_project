@@ -72,7 +72,7 @@ if (isset($_SESSION['admin_id']) &&
 </body>
 </html>
 <?php 
-
+//
    }else {
   header("Location: ../login.php");
   exit;
