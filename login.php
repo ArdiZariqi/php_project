@@ -57,7 +57,7 @@
 			<br /><br />
 			<div class="text-center text-light">
 				<?php
-				$pass = 895;
+				$pass = 145;
 				$pass = password_hash($pass, PASSWORD_DEFAULT);
 				echo $pass;
 				?>
