@@ -35,7 +35,7 @@
 					<input type="password" class="form-control" name="pass">
 					<a href="forgotPw.php" class="text-decoration-none">Forgot Password?</a>
 				</div>
-				<div class="mb-3">
+				<div class="mb-5">
 					<label class="form-label">Login As</label>
 					<select class="form-control" name="role">
 						<option value="1">Admin</option>
@@ -44,12 +44,8 @@
 						<option value="4">Registrar Office</option>
 					</select>
 				</div>
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary fw-bold fst-italic" style="width: 300px;">Login</button>
-				</div>
-
-				<div class="text-center mt-2">
-					<p>Don't have an account? <a href="register.php" class="text-decoration-none">Register here</a></p>
+				<div class="text-center mb-5">
+					<button type="submit" class="btn btn-primary fw-bold fst-italic" style="width: 300px; height: 50px;">Login</button>
 				</div>
 			</form>
 

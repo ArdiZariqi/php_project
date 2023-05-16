@@ -13,12 +13,12 @@
 <body class="body-login">
 	<div class="black-fill"><br /> <br />
 		<div class="d-flex justify-content-center align-items-center flex-column">
-			<form class="login" method="post" action="verifyAcc.php" autocomplete="">
+			<form class="login" method="post" action="changePassword.php" autocomplete="">
 
 				<div class="text-center">
 					<img src="Logo 1_a v5.png" width="200" height="200">
 				</div>
-				<h2 style="text-align: center;">Verify account</h2>
+				<h2 style="text-align: center;">Enter code</h2>
 				<?php if (isset($_GET['error'])) { ?>
 					<div class="alert alert-danger" role="alert">
 						<?= $_GET['error'] ?>
@@ -26,8 +26,8 @@
 				<?php } ?>
 
 				<div class="my-5 mx-5">
-					<label class="form-label">Enter your email</label>
-					<input type="email" class="form-control" name="email">
+					<label class="form-label">Enter code</label>
+					<input type="text" class="form-control" name="code">
 				</div>
 
 				<div class="text-center">
