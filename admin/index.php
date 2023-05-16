@@ -16,6 +16,89 @@ if (isset($_SESSION['admin_id']) &&
 	<link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>   
+      .container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+
+      .row-cols-5 {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+
+      .col {
+          flex-basis: 20%;
+          max-width: 20%;
+          padding: 10px;
+          text-align: center;
+      }
+
+      .col a {
+          display: block;
+          padding: 20px;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          text-decoration: none;
+          color: #333;
+          transition: background-color 0.3s;
+      }
+
+      .col a:hover {
+          background-color: #e0e0e0;
+      }
+
+      .col i {
+          display: block;
+          font-size: 24px;
+          margin-bottom: 10px;
+      }
+
+      .col span {
+          display: block;
+      }
+
+      .btn {
+          font-size: 16px;
+          border-radius: 3px;
+      }
+
+      .btn-dark {
+          background-color: #333;
+          color: #fff;
+          border-color: #333;
+      }
+
+      .btn-dark:hover {
+          background-color: #555;
+          border-color: #555;
+      }
+
+      .btn-primary {
+          background-color: #007bff;
+          color: #fff;
+          border-color: #007bff;
+      }
+
+      .btn-primary:hover {
+          background-color: #0069d9;
+          border-color: #0062cc;
+      }
+
+      .btn-warning {
+          background-color: #ffc107;
+          color: #fff;
+          border-color: #ffc107;
+      }
+
+      .btn-warning:hover {
+          background-color: #e0a800;
+          border-color: #d39e00;
+      }
+
+  </style>
 </head>
 <body>
     <?php 
