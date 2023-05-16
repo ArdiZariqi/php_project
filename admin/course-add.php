@@ -66,7 +66,7 @@ if (isset($_SESSION['admin_id']) &&
     <script>
         $(document).ready(function(){
              $("#navLinks li:nth-child(8) a").addClass('active');
-        });
+        });//comment
     </script>
 
 </body>
