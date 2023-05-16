@@ -23,7 +23,67 @@ if (isset($_SESSION['admin_id']) &&
 	<link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <style>
+  
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.btn-dark {
+			background-color: #343a40;
+			border-color: #343a40;
+		}
+
+		.btn-dark:hover {
+			background-color: #23272b;
+			border-color: #23272b;
+		}
+
+		.n-table {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 20px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.table {
+			background-color: #fff;
+		}
+
+		.table thead th {
+			background-color: #343a40;
+			color: #fff;
+		}
+
+		.table-bordered th,
+		 .table-bordered td {
+			border-color: #dee2e6;
+		}
+
+		.alert {
+			margin-top: 20px;
+		}
+
+		.w-450 {
+			width: 450px;
+		}
+
+		.mt-5 {
+			margin-top: 5rem;
+		}
+
+		.m-5 {
+			margin: 5rem;
+		}
+
+		.active {
+			color: #fff;
+		}
+	</style>
+
+  </head>
 <body>
     <?php 
         include "inc/navbar.php";
@@ -45,9 +105,9 @@ if (isset($_SESSION['admin_id']) &&
                         <i class="fa fa-search" 
                            aria-hidden="true"></i>
                       </button>
-             </div>
+        </div>
            </form>
-
+   
            <?php if (isset($_GET['error'])) { ?>
             <div class="alert alert-danger mt-3 n-table" 
                  role="alert">
@@ -134,14 +194,13 @@ if (isset($_SESSION['admin_id']) &&
               </div>
          <?php } ?>
      </div>
-     
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
     <script>
         $(document).ready(function(){
              $("#navLinks li:nth-child(2) a").addClass('active');
         });
     </script>
-
 </body>
 </html>
 <?php 
