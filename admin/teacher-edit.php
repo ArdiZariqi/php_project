@@ -8,7 +8,6 @@ if (isset($_SESSION['admin_id']) &&
       
        include "../DB_connection.php";
        include "data/subject.php";
-       include "data/grade.php";
        include "data/section.php";
        include "data/class.php";
        include "data/teacher.php";
@@ -176,15 +175,7 @@ if (isset($_SESSION['admin_id']) &&
                    $checked =1;
                 }
               }
-              $grade = getGradeById($class['class_id'], $conn);
             ?>
-            <div class="col">
-              <input type="checkbox"
-                     name="classes[]"
-                     <?php if($checked) echo "checked"; ?>
-                     value="<?=$grade['grade_id']?>">
-                     <?=$grade['grade_code']?>-<?=$grade['grade']?>
-            </div>
             <?php } ?>
              
           </div>

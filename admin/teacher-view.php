@@ -7,7 +7,6 @@ if (isset($_SESSION['admin_id']) &&
        include "../DB_connection.php";
        include "data/teacher.php";
        include "data/subject.php";
-       include "data/grade.php";
        include "data/section.php";
        include "data/class.php";
 

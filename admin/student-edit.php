@@ -8,11 +8,9 @@ if (isset($_SESSION['admin_id']) &&
       
        include "../DB_connection.php";
        include "data/subject.php";
-       include "data/grade.php";
        include "data/student.php";
        include "data/section.php";
        $subjects = getAllSubjects($conn);
-       $grades = getAllGrades($conn);
        $sections = getAllsections($conn);
        
        $student_id = $_GET['student_id'];
@@ -119,26 +117,7 @@ if (isset($_SESSION['admin_id']) &&
                 name="student_id"
                 hidden>
 
-        <div class="mb-3">
-          <label class="form-label">Grade</label>
-          <div class="row row-cols-5">
-            <?php 
-            $grade_ids = str_split(trim($student['grade']));
-            foreach ($grades as $grade){ 
-              $checked =0;
-              foreach ($grade_ids as $grade_id ) {
-                if ($grade_id == $grade['grade_id']) {
-                   $checked =1;
-                }
-              }
-            ?>
-            <div class="col">
-              <input type="radio"
-                     name="grade"
-                     <?php if($checked) echo "checked"; ?>
-                     value="<?=$grade['grade_id']?>">
-                     <?=$grade['grade_code']?>-<?=$grade['grade']?>
-            </div>
+          
             <?php } ?>
              
           </div>
@@ -288,8 +267,7 @@ if (isset($_SESSION['admin_id']) &&
   }else {
     header("Location: student.php");
     exit;
-  } 
-}else {
+  } else {
 	header("Location: student.php");
 	exit;
 } 
