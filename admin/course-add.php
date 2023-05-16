@@ -76,9 +76,6 @@ if (isset($_SESSION['admin_id']) &&
   }else {
     header("Location: ../login.php");
     exit;
-  } else {
-	header("Location: ../login.php");
-	exit;
-} 
+  }
 
 ?>
