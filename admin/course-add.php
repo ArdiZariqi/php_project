@@ -54,27 +54,35 @@ if (
             <input type="text" class="form-control" name="course_code">
           </div>
 
-      <button type="submit" class="btn btn-primary">Create</button>
-     </form>
-     </div>
-     <?php } ?>
-
-     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
-    <script>
-        $(document).ready(function(){
-             $("#navLinks li:nth-child(8) a").addClass('active');
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $("#navLinks li:nth-child(8) a").addClass('active');
         });
-    </script>
+      </script>
 
-</body>
-</html>
-<?php 
+    </body>
 
-  }else {
+    </html>
+<?php
+
+  } else {
     header("Location: ../login.php");
     exit;
+<<<<<<< HEAD
   } else {
 	header("Location: ../login.php");
 	exit;
 } 
+=======
+  }
+} else {
+  header("Location: ../login.php");
+  exit;
+}
+
+?>
+>>>>>>> 255f8bf988d3f20c7b4bc897e26f2a2e31db52e2
