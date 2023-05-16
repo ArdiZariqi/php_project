@@ -7,7 +7,6 @@ if (isset($_SESSION['admin_id']) &&
       
        include "../DB_connection.php";
        include "data/subject.php";
-       include "data/grade.php";
        include "data/section.php";
        include "data/class.php";
        $subjects = getAllSubjects($conn);
@@ -176,10 +175,9 @@ if (isset($_SESSION['admin_id']) &&
                      name="classes[]"
                      value="<?=$class['class_id']?>">
                      <?php 
-                        $grade = getGradeById($class['grade'], $conn); 
                         $section = getSectioById($class['section'], $conn); 
                       ?>
-                     <?=$grade['grade_code']?>-<?=$grade['grade'].$section['section']?>
+                     <?=$section['section']?>
             </div>
             <?php endforeach ?>
              

@@ -17,8 +17,7 @@ if (isset($_POST['fname'])      &&
     isset($_POST['section'])       &&
     isset($_POST['parent_fname'])  &&
     isset($_POST['parent_lname'])  &&
-    isset($_POST['parent_phone_number']) &&
-    isset($_POST['grade'])) {
+    isset($_POST['parent_phone_number'])) {
     
     include '../../DB_connection.php';
     include "../data/student.php";
@@ -38,7 +37,6 @@ if (isset($_POST['fname'])      &&
 
     $student_id = $_POST['student_id'];
     
-    $grade = $_POST['grade'];
 
     $data = 'student_id='.$student_id;
 
@@ -92,10 +90,10 @@ if (isset($_POST['fname'])      &&
         exit;
     }else {
         $sql = "UPDATE students SET
-                username = ?, fname=?, lname=?, grade=?, address=?,gender = ?, section=?, email_address=?, date_of_birth=?, parent_fname=?,parent_lname=?,parent_phone_number=?
+                username = ?, fname=?, lname=?, address=?,gender = ?, section=?, email_address=?, date_of_birth=?, parent_fname=?,parent_lname=?,parent_phone_number=?
                 WHERE student_id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$uname,$fname, $lname, $grade, $address, $gender,$section, $email_address, $date_of_birth, $parent_fname, $parent_lname,$parent_phone_number, $student_id]);
+        $stmt->execute([$uname,$fname, $lname, $address, $gender, $section, $email_address, $date_of_birth, $parent_fname, $parent_lname,$parent_phone_number, $student_id]);
         $sm = "successfully updated!";
         header("Location: ../student-edit.php?success=$sm&$data");
         exit;

@@ -82,11 +82,11 @@ if (isset($_SESSION['admin_id']) &&
 <?php 
 
   }else {
-    header("Location: grade.php");
+    header("Location: student.php");
     exit;
   } 
 }else {
-	header("Location: grade.php");
+	header("Location: student.php");
 	exit;
 } 
 

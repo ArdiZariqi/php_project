@@ -6,7 +6,6 @@ if (isset($_SESSION['admin_id']) &&
     if ($_SESSION['role'] == 'Admin') {
        include "../DB_connection.php";
        include "data/class.php";
-       include "data/grade.php";
        include "data/section.php";
        $classes = getAllClasses($conn);
  ?>
@@ -60,9 +59,8 @@ if (isset($_SESSION['admin_id']) &&
                     <th scope="row"><?=$i?></th>
                     <td>
                       <?php 
-                          $grade  = getGradeById($class['grade'], $conn);
                           $section = getSectioById($class['section'], $conn);
-                          echo $grade['grade_code'].'-'.$grade['grade'].$section['section'];
+                          echo $section['section'];
                        ?>
                     </td>
                     <td>
@@ -87,7 +85,7 @@ if (isset($_SESSION['admin_id']) &&
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
     <script>
         $(document).ready(function(){
-             $("#navLinks li:nth-child(6) a").addClass('active');
+             $("#navLinks li:nth-child(5) a").addClass('active');
         });
     </script>
 

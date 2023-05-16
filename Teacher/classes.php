@@ -6,7 +6,6 @@ if (isset($_SESSION['teacher_id']) &&
     if ($_SESSION['role'] == 'Teacher') {
        include "../DB_connection.php";
        include "data/class.php";
-       include "data/grade.php";
        include "data/section.php";
        include "data/teacher.php";
        
@@ -48,9 +47,8 @@ if (isset($_SESSION['teacher_id']) &&
 
                       <?php 
                           $classesx = str_split(trim($teacher['class']));
-                          $grade  = getGradeById($class['grade'], $conn);
                           $section = getSectioById($class['section'], $conn);
-                          $c = $grade['grade_code'].'-'.$grade['grade'].$section['section'];
+                          $c = $section['section'];
                           foreach ($classesx as $class_id) {
                                if ($class_id == $class['class_id']) {  $i++; ?>
                             <tr>

@@ -6,7 +6,6 @@ if (isset($_SESSION['teacher_id']) &&
     if ($_SESSION['role'] == 'Registrar Office') {
        include "../DB_connection.php";
        include "data/student.php";
-       include "data/grade.php";
        $students = getAllStudents($conn);
  ?>
 <!DOCTYPE html>
@@ -68,7 +67,6 @@ if (isset($_SESSION['teacher_id']) &&
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Grade</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -84,16 +82,6 @@ if (isset($_SESSION['teacher_id']) &&
                     </td>
                     <td><?=$student['lname']?></td>
                     <td><?=$student['username']?></td>
-                    <td>
-                      <?php 
-                           $grade = $student['grade'];
-                           $g_temp = getGradeById($grade, $conn);
-                           if ($g_temp != 0) {
-                              echo $g_temp['grade_code'].'-'.
-                                     $g_temp['grade'];
-                            }
-                        ?>
-                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>
