@@ -61,10 +61,10 @@ if (isset($_POST['old_pass']) &&
   }
 
   }else {
-    header("Location: ../../logout.php");
+    header("Location: ../../student-change.php");
     exit;
   } 
 }else {
-	header("Location: ../../logout.php");
+	header("Location: ../../student-change.php");
 	exit;
 } 
