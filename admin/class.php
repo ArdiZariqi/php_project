@@ -29,54 +29,43 @@ if (isset($_SESSION['admin_id']) &&
     margin: 0 auto;
     padding: 20px;
   }
-
   .btn-dark {
     background-color: #343a40;
     border-color: #343a40;
   }
-
   .btn-dark:hover {
     background-color: #23272b;
     border-color: #23272b;
   }
-
   .n-table {
     background-color: #fff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
-
   .table {
     background-color: #fff;
   }
-
   .table thead th {
     background-color: #343a40;
     color: #fff;
   }
-
   .table-bordered th,
    .table-bordered td {
     border-color: #dee2e6;
   }
-
   .alert {
     margin-top: 20px;
   }
-
   .w-450 {
     width: 450px;
   }
-
   .mt-5 {
     margin-top: 5rem;
   }
-
   .m-5 {
     margin: 5rem;
   }
-
   .active {
     color: #fff;
   }

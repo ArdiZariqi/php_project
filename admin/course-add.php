@@ -26,7 +26,6 @@ if (
           font-family: Arial, sans-serif;
           background-color: #f7f7f7;
         }
-
         .container {
           max-width: 600px;
           margin: 0 auto;
@@ -35,7 +34,6 @@ if (
           border-radius: 5px;
           box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
         }
-
         .btn-go-back {
           margin-bottom: 10px;
           background-color: #212529;
@@ -43,24 +41,24 @@ if (
         .form-w h3 {
           margin-bottom: 20px;
           text-align: center;
-          background-color: #212529;
+          background-color: #343a40;
           color: #fff;
           padding: 10px;
         }
-  
         .form-w hr {
           border-top: 1px solid #ccc;
         }
-
+        .btn-dark {
+         background-color: #343a40;
+         border-color: #343a40;
+        }
         .alert {
           margin-top: 10px;
         }
-
         .btn-primary {
           background-color: #3867d6;
           border-color: #4caf50;
         }
-
         .btn-primary:hover {
           background-color: #45a049;
           border-color: #45a049;

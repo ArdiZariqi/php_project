@@ -25,7 +25,6 @@ if (isset($_SESSION['admin_id']) &&
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
         }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -34,19 +33,21 @@ if (isset($_SESSION['admin_id']) &&
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
+        .btn-dark {
+         background-color: #343a40;
+         border-color: #343a40;
+         }
         .table thead th {
          background-color: #343a40;
          color: #fff;
         }
         .btn-add {
             margin-bottom: 10px;
-            background-color: ##212529;
+            background-color: #212529;
         }
-
         .alert {
             margin-top: 10px;
         }
-
         .table {
             margin-top: 20px;
         }

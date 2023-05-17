@@ -37,7 +37,6 @@ if (isset($_SESSION['admin_id']) &&
                     background-color: #f5f5f5;
                     font-family: Arial, sans-serif;
                 }
-
                 .container {
                     max-width: 600px;
                 }
@@ -48,14 +47,12 @@ if (isset($_SESSION['admin_id']) &&
                     border-radius: 10px;
                     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
                 }
-
                 .form-w h3 {
                     font-size: 28px;
                     font-weight: 600;
                     margin-bottom: 20px;
                     color: #333333;
                 }
-
                 .form-w .form-label {
                     font-weight: 500;
                     color: #333333;
@@ -66,13 +63,15 @@ if (isset($_SESSION['admin_id']) &&
                     padding: 10px;
                     color: #333333;
                 }
-
+                .btn-dark {
+                 background-color: #343a40;
+                 border-color: #343a40;
+                }
                 .form-w .form-control:focus {
                     outline: none;
                     border-color: #4b7bec;
                     box-shadow: 0 0 0 0.2rem rgba(75, 123, 236, 0.25);
                 }
-
                 .form-w .btn-primary {
                     display: block;
                     margin: 20px auto 0;
@@ -85,27 +84,22 @@ if (isset($_SESSION['admin_id']) &&
                     border: none;
                     cursor: pointer;
                 }
-
                 .form-w .btn-primary:hover {
                     background-color: #3867d6;
                 }
-
                 .form-w .alert {
                     margin-bottom: 15px;
                 }
-
                 .alert-danger {
                     background-color: #f8d7da;
                     border-color: #f5c6cb;
                     color: #721c24;
                 }
-
                 .alert-success {
                     background-color: #d4edda;
                     border-color: #c3e6cb;
                     color: #155724;
                 }
-
                 @media screen and (max-width: 768px) {
                     .form-w {
                         padding: 20px;

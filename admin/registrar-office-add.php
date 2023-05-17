@@ -91,7 +91,10 @@ body {
   border: none;
   cursor: pointer;
 }
-
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
 .form-w .btn-primary:hover {
   background-color: #3867d6;
 }
