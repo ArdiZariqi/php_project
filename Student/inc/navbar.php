@@ -17,6 +17,12 @@
         <li class="nav-item">
           <a class="nav-link" href="pass.php">Change Password</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="course.php">My Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Materials</a>
+        </li>
 
       </ul>
       <ul class="navbar-nav me-right mb-2 mb-lg-0">
