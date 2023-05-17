@@ -2,7 +2,7 @@
 
 // All Subjects
 function getAllSubjects($conn){
-   $sql = "SELECT * FROM subjects";
+   $sql = "SELECT * FROM student_subjects";
    $stmt = $conn->prepare($sql);
    $stmt->execute();
 
@@ -10,13 +10,13 @@ function getAllSubjects($conn){
      $subjects = $stmt->fetchAll();
      return $subjects;
    }else {
-   	return 0;
+   	return [];
    }
 }
 
 // Get Subjects by ID
 function getSubjectById($subject_id, $conn){
-   $sql = "SELECT * FROM subjects
+   $sql = "SELECT * FROM student_subjects
            WHERE subject_id=?";
    $stmt = $conn->prepare($sql);
    $stmt->execute([$subject_id]);
@@ -29,33 +29,34 @@ function getSubjectById($subject_id, $conn){
    }
 }
 
-function removeCourse($id, $conn){
-  $sql  = "DELETE FROM subjects
+function removeCourse($subject_id, $conn) {
+  $sql = "DELETE FROM student_subjects
           WHERE subject_id=?";
   $stmt = $conn->prepare($sql);
-  $re   = $stmt->execute([$id]);
-  if ($re) {
-    return 1;
-  }else {
-   return 0;
+  $result = $stmt->execute([$subject_id]);
+  if ($result) {
+      return 1;
+  } else {
+      return 0;
   }
 }
 
 
 
-function getStudentSubjects($conn, $student_id) {
-    $sql = "SELECT subjects.subject, subjects.subject_code
-            FROM subjects
-            INNER JOIN student_subjects ON subjects.subject_id = student_subjects.subject_id
-            WHERE student_subjects.student_id = :student_id";
-    
+function getStudentSubjects($conn, $student_id)
+{
+    $sql = "SELECT * FROM subjects WHERE student_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':student_id', $student_id, PDO::PARAM_INT);
+    $stmt->bind_param("i", $student_id);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    return $result;
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return array(); 
+    }
 }
+
 ?>
 
 

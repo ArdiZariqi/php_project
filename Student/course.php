@@ -6,6 +6,7 @@ if (isset($_SESSION['student_id']) &&
     if ($_SESSION['role'] == 'Student') {
        include "../DB_connection.php";
        include "data/subject.php";
+       $student_id = $_SESSION['student_id'];
        $courses = getAllSubjects($conn);
        
  ?>
@@ -22,79 +23,74 @@ if (isset($_SESSION['student_id']) &&
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <?php 
-        include "inc/navbar.php";
-        if ($courses != 0) {
-     ?>
-     <div class="container mt-5">
-        <a href="course-add.php"
-           class="btn btn-dark">Register a New Course</a>
+            <?php
+            include "inc/navbar.php";
+            if ($courses != -1) {
+                ?>
+                <div class="container mt-5">
+                    <a href="course-add.php" class="btn btn-dark">Register a New Course</a>
 
-           <?php if (isset($_GET['error'])) { ?>
-            <div class="alert alert-danger mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['error']?>
-            </div>
-            <?php } ?>
+                    <?php if (isset($_GET['error'])) { ?>
+                        <div class="alert alert-danger mt-3 n-table" role="alert">
+                            <?= $_GET['error'] ?>
+                        </div>
+                    <?php } ?>
 
-          <?php if (isset($_GET['success'])) { ?>
-            <div class="alert alert-info mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['success']?>
-            </div>
-            <?php } ?>
+                    <?php if (isset($_GET['success'])) { ?>
+                        <div class="alert alert-info mt-3 n-table" role="alert">
+                            <?= $_GET['success'] ?>
+                        </div>
+                    <?php } ?>
 
-           <div class="table-responsive">
-              <table class="table table-bordered mt-3 n-table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Course Code</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $i = 0; foreach ($courses as $course ) { 
-                    $i++;  ?>
-                  <tr>
-                    <th scope="row"><?=$i?></th>
-                    <td>
-                      <?php 
-                          echo $course['subject'];
-                       ?>
-                    </td>
-                    <td>
-                      <?php 
-                          echo $course['subject_code'];
-                       ?>
-                    </td>
-                    <td>
-                           
-                        <a href="course-delete.php?course_id=<?=$course['subject_id']?>"
-                           class="btn btn-danger">Delete</a>
-                    </td>
-                  </tr>
+                    <div class="table-responsive">
+                        <table class="table table-bordered mt-3 n-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Subject ID</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 0;
+                                foreach ($courses as $course) {
+                                    $i++;
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?= $i ?></th>
+                                        <td>
+                                            <?= $course['s_subject'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $course['s_subject_code'] ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($course['student_id'] == $student_id) { ?>
+                                                <a href="course-delete.php?course_id=<?= $course['subject_id'] ?>" class="btn btn-danger">Delete</a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php } else { ?>
+                    <div class="alert alert-info .w-450 m-5" role="alert">
+                        Empty!
+                    </div>
                 <?php } ?>
-                </tbody>
-              </table>
-           </div>
-         <?php }else{ ?>
-             <div class="alert alert-info .w-450 m-5" 
-                  role="alert">
-                Empty!
-              </div>
-         <?php } ?>
-     </div>
-     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
-    <script>
-        $(document).ready(function(){
-             $("#navLinks li:nth-child(7) a").addClass('active');
-        });
-    </script>
+                </div>
 
-</body>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $("#navLinks li:nth-child(3) a").addClass('active');
+                    });
+                </script>
+
+        </body>
+
 </html>
 <?php 
 
