@@ -137,11 +137,11 @@ if (isset($_SESSION['teacher_id']) &&
 <?php 
 
   }else {
-    header("Location: ../classes.php");
+    header("Location: ../login.php");
     exit;
   } 
 }else {
-    header("Location: ../classes.php");
+    header("Location: ../login.php");
     exit;
 } 
 
