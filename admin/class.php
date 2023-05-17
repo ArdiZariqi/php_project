@@ -20,6 +20,68 @@ if (isset($_SESSION['admin_id']) &&
 	<link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body{
+      background-color: #f5f5f5;
+    }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+
+  .btn-dark:hover {
+    background-color: #23272b;
+    border-color: #23272b;
+  }
+
+  .n-table {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .table {
+    background-color: #fff;
+  }
+
+  .table thead th {
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  .table-bordered th,
+   .table-bordered td {
+    border-color: #dee2e6;
+  }
+
+  .alert {
+    margin-top: 20px;
+  }
+
+  .w-450 {
+    width: 450px;
+  }
+
+  .mt-5 {
+    margin-top: 5rem;
+  }
+
+  .m-5 {
+    margin: 5rem;
+  }
+
+  .active {
+    color: #fff;
+  }
+</style>
+  
 </head>
 <body>
     <?php 
@@ -50,6 +112,7 @@ if (isset($_SESSION['admin_id']) &&
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Class</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -20,6 +20,37 @@ if (isset($_SESSION['admin_id']) &&
 	<link rel="icon" href="../logo.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .table thead th {
+         background-color: #343a40;
+         color: #fff;
+        }
+        .btn-add {
+            margin-bottom: 10px;
+            background-color: ##212529;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <?php 
@@ -51,6 +82,7 @@ if (isset($_SESSION['admin_id']) &&
                     <th scope="col">#</th>
                     <th scope="col">Course</th>
                     <th scope="col">Course Code</th>
+                    <th scope="col">Action</th>
                     
                   </tr>
                 </thead>
@@ -75,7 +107,7 @@ if (isset($_SESSION['admin_id']) &&
                            
                         <a href="course-delete.php?course_id=<?=$course['subject_id']?>"
                            class="btn btn-danger">Delete</a>
-                    </td>
+                  </td>
                   </tr>
                 <?php } ?>
                 </tbody>
