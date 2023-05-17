@@ -52,7 +52,7 @@
 			<br /><br />
 			<div class="text-center text-light">
 				<?php
-				$pass = 1234;
+				$pass = 987;
 				$pass = password_hash($pass, PASSWORD_DEFAULT);
 				echo $pass;
 				?>
