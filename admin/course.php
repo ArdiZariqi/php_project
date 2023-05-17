@@ -82,6 +82,7 @@ if (isset($_SESSION['admin_id']) &&
                     <th scope="col">#</th>
                     <th scope="col">Course</th>
                     <th scope="col">Course Code</th>
+                    <th scope="col">Action</th>
                     
                   </tr>
                 </thead>
