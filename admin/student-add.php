@@ -1,38 +1,38 @@
-<?php 
+<?php
 session_start();
-if (isset($_SESSION['admin_id']) && 
+if (isset($_SESSION['admin_id']) &&
     isset($_SESSION['role'])) {
 
     if ($_SESSION['role'] == 'Admin') {
-      
-       include "../DB_connection.php";
-       include "data/section.php";
-       $sections = getAllSections($conn);
+
+        include "../DB_connection.php";
+        include "data/section.php";
+        $sections = getAllSections($conn);
 
 
-       $fname = '';
-       $lname = '';
-       $uname = '';
-       $address = '';
-       $email = '';
-       $pfn = '';
-       $pln = '';
-       $ppn = '';
+        $fname = '';
+        $lname = '';
+        $uname = '';
+        $address = '';
+        $email = '';
+        $pfn = '';
+        $pln = '';
+        $ppn = '';
 
-
-       if (isset($_GET['fname'])) $fname = $_GET['fname'];
-       if (isset($_GET['lname'])) $lname = $_GET['lname'];
-       if (isset($_GET['uname'])) $uname = $_GET['uname'];
-       if (isset($_GET['address'])) $address = $_GET['address'];
-       if (isset($_GET['email'])) $email = $_GET['email'];
-       if (isset($_GET['pfn'])) $pfn = $_GET['pfn'];
-       if (isset($_GET['pln'])) $pln = $_GET['pln'];
-       if (isset($_GET['ppn'])) $ppn = $_GET['ppn'];
- ?>
+        if (isset($_GET['fname'])) $fname = $_GET['fname'];
+        if (isset($_GET['lname'])) $lname = $_GET['lname'];
+        if (isset($_GET['uname'])) $uname = $_GET['uname'];
+        if (isset($_GET['address'])) $address = $_GET['address'];
+        if (isset($_GET['email'])) $email = $_GET['email'];
+        if (isset($_GET['pfn'])) $pfn = $_GET['pfn'];
+        if (isset($_GET['pln'])) $pln = $_GET['pln'];
+        if (isset($_GET['ppn'])) $ppn = $_GET['ppn'];
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin - Add Student</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
@@ -127,17 +127,16 @@ body {
 }
     </style>
 </head>
+
 <body>
-    <?php 
+<?php 
         include "inc/navbar.php";
      ?>
      <div class="container mt-5">
         <a href="student.php"
            class="btn btn-dark">Go Back</a>
 
-        <form method="post"
-              class="shadow p-3 mt-5 form-w" 
-              action="req/student-add.php">
+        <form id="studentForm" method="post" class="shadow p-3 mt-5 form-w" action="req/student-add.php">
         <h3>Add New Student</h3><hr>
         <?php if (isset($_GET['error'])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -249,18 +248,38 @@ body {
              
           </div>
         </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
 
-      <button type="submit" class="btn btn-primary">Register</button>
-     </form>
-     </div>
-     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
-    <script>
-        $(document).ready(function(){
-             $("#navLinks li:nth-child(3) a").addClass('active');
-        });
 
-        function makePass(length) {
+    <script>
+        $(document).ready(function() {
+            $("#navLinks li:nth-child(3) a").addClass('active');
+
+            $('#studentForm').submit(function(e) {
+                e.preventDefault(); 
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: formData,
+                    success: function(response) {
+                        
+                        console.log(response);
+                       
+                    },
+                    error: function() {
+                      
+                        console.error('Ajax request error');
+                        
+                    }
+                });
+            });
+            function makePass(length) {
             var result           = '';
             var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             var charactersLength = characters.length;
@@ -278,19 +297,19 @@ body {
           e.preventDefault();
           makePass(4);
         });
+        });
     </script>
-
 </body>
-</html>
-<?php 
 
-  }else {
+</html>
+<?php
+
+    } else {
+        header("Location: ../login.php");
+        exit;
+    }
+} else {
     header("Location: ../login.php");
     exit;
-  } 
-}else {
-	header("Location: ../login.php");
-	exit;
-} 
-
+}
 ?>
