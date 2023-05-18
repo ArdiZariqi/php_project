@@ -61,6 +61,32 @@ if ($response !== false) {
     echo 'Email sending failed. Please try again.';
 }
 
+function checkEmailExists($email)
+{
+    $servername = "localhost: 3310";
+    $username = "root";
+    $password = "";
+    $dbname = "sms_db";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Lidhja me bazën e të dhënave dështoi: " . $conn->connect_error);
+    }
+
+    $email = $conn->real_escape_string($email);
+    $sql = "SELECT * FROM admin WHERE email_address = '$email'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $conn->close();
+        return true;
+    } else {
+        $conn->close();
+        return false;
+    }
+}
+
 function generateVerificationCode($length = 6)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -77,10 +103,10 @@ function generateVerificationCode($length = 6)
 
 function saveVerificationCode($email, $verificationCode)
 {
-    $servername = "localhost";
+    $servername = "localhost: 3310";
     $username = "root";
-    $password = "password";
-    $dbname = "database_name";
+    $password = "";
+    $dbname = "sms_db";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -88,6 +114,7 @@ function saveVerificationCode($email, $verificationCode)
     }
 
     $sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
+
     if ($conn->query($sql) === true) {
         echo "Verification code saved successfully.";
     } else {
