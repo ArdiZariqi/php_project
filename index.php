@@ -103,9 +103,7 @@ if ($setting != 0) {
         </section>
         <div class="text-center text-light">
         	Copyright &copy; <?=$setting['current_year']?> <?=$setting['school_name']?>. All rights reserved.
-        </div>
-
-    	</div>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
 </body>
