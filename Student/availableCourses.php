@@ -21,37 +21,53 @@ if (isset($_SESSION['student_id']) &&
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        .btn-dark {
-         background-color: #343a40;
-         border-color: #343a40;
-         }
-        .table thead th {
-         background-color: #343a40;
-         color: #fff;
-        }
-        .btn-add {
-            margin-bottom: 10px;
-            background-color: #212529;
-        }
-        .alert {
-            margin-top: 10px;
-        }
-        .table {
-            margin-top: 20px;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+    .table-responsive {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 30px 40px rgba(0, 0, 0, 0.1);
+    }
+    .btn-dark {
+        background-color: #343a40;
+        border-color: #343a40;
+        color: #fff;
+    }
+    .table-responsive {
+       margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+    .table {
+        width: 100%;
+        max-width: 800px;
+        border-collapse: collapse;
+        background-color: #fff;
+    }
+    .table thead th {
+        background-color: #343a40;
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+    }
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .table tbody td {
+        padding: 10px;
+        text-align: left;
+    }
+    .alert-info {
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        color: #0c5460;
+    }
+</style>
 </head>
 <body>
     <?php 
