@@ -7,60 +7,53 @@ $email = $_POST['mail']; // Get the email from the form
 saveVerificationCode($email, $verificationCode);
 
 // Send the email with the verification code
-$apiKey = 'nnoreply250';
-$fromEmail = 'nnoreply250@gmail.com';
-$subject = 'Verification Code';
-$message = 'Your verification code is: ' . $verificationCode;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['mail'];
 
-$url = 'https://api.sendgrid.com/v3/mail/send';
+    if (checkEmailExists($email)) {
 
-$headers = array(
-    'Authorization: Bearer ' . $apiKey,
-    'Content-Type: application/json'
-);
+        $verificationCode = generateVerificationCode();
+        saveVerificationCode($email, $verificationCode);
 
-$data = array(
-    'personalizations' => array(
-        array(
-            'to' => array(
-                array(
-                    'email' => $email
-                )
-            )
-        )
-    ),
-    'from' => array(
-        'email' => $fromEmail
-    ),
-    'subject' => $subject,
-    'content' => array(
-        array(
-            'type' => 'text/plain',
-            'value' => $message
-        )
-    )
-);
+        $apiUrl = 'https://api.elasticemail.com/v2/email/send';
+        $apiKey = '8EC99B83A7ACB1D1E568C49BEC213FA207AFB54F3D6C44F4274415B111BC725067FCC77259B9A01CEB742ECAADAB0F00';
+        $fromEmail = 'zariqiardi@gmail.com';
+        $subject = 'Password Reset Code';
+        $message = 'Your password reset code is: ' . $verificationCode;
 
-$options = array(
-    'http' => array(
-        'header'  => implode("\r\n", $headers),
-        'method'  => 'POST',
-        'content' => json_encode($data)
-    )
-);
+        $data = array(
+            'apikey' => $apiKey,
+            'from' => $fromEmail,
+            'subject' => $subject,
+            'body' => $message,
+            'to' => $email
+        );
 
-$context  = stream_context_create($options);
-$response = file_get_contents($url, false, $context);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $apiUrl);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-if ($response !== false) {
-    // Redirect the user to the verification page
-    header('Location: verify_code.php');
-    exit;
-} else {
-    // Failed to send email
-    echo 'Email sending failed. Please try again.';
+        $response = curl_exec($ch);
+
+        if ($response !== false) {
+            $responseData = json_decode($response);
+            if ($responseData->success) {
+                header('Location: verify_code.php?email=' . $email);
+                exit;
+            } else {
+                $error = 'Email sending failed. Please try again.';
+            }
+        } else {
+            $error = 'Email sending failed. Please try again.';
+        }
+
+        curl_close($ch);
+    } else {
+        $error = 'Email not found. Please enter a valid email address.';
+    }
 }
-
 function checkEmailExists($email)
 {
     $servername = "localhost: 3307";
@@ -89,7 +82,7 @@ function checkEmailExists($email)
 
 function generateVerificationCode($length = 6)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $characters = '0123456789';
     $code = '';
 
     $characterCount = strlen($characters);

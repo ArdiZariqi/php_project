@@ -7,7 +7,7 @@
     <title>Login - Besa iTech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="Logo 1_a v5.png">
 </head>
 
 <body class="body-login">
@@ -29,7 +29,7 @@
                     <input type="password" class="form-control" name="confirm_password">
                 </div>
                 <div class="mb-3">
-                    <!-- <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>"> -->
+                    <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" style="width: 200px;">Change Password</button>
@@ -87,6 +87,5 @@ function saveNewPassword($email, $newPassword)
     // Mbylleni lidhjen me bazën e të dhënave
     $conn->close();
 }
-
 
 ?>
