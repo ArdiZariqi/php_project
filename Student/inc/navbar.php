@@ -19,7 +19,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="course.php">My Courses</a>
-        </li>
+</li>
+
         <li class="nav-item">
           <a class="nav-link" href="pass.php">Change Password</a>
         </li>

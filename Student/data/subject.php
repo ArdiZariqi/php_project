@@ -55,6 +55,7 @@ function getAllSubjects1($conn){
 
 
 
+
 function getStudentSubjects($conn, $student_id)
 {
     $sql = "SELECT * FROM subjects WHERE student_id = ?";

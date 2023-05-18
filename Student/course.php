@@ -70,6 +70,7 @@ if (isset($_SESSION['student_id']) &&
                                                 <a href="course-delete.php?course_id=<?= $course['subject_id'] ?>" class="btn btn-danger">Delete</a>
                                             <?php } ?>
                                         </td>
+
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -87,7 +88,28 @@ if (isset($_SESSION['student_id']) &&
                     $(document).ready(function() {
                         $("#navLinks li:nth-child(3) a").addClass('active');
                     });
-                </script>
+                    
+    
+                    $('.delete-btn').click(function() {
+                     var courseId = $(this).data('course-id');
+        
+                    $.ajax({
+                    url: 'course-delete.php',
+                    type: 'POST',
+                    data: { course_id: courseId },
+                    success: function(response) {
+               
+                    location.reload();
+                    },
+                    error: function(xhr, status, error) {
+               
+                    console.log(xhr.responseText);
+            }
+        });
+    });
+</script>
+
+               
 
         </body>
 
