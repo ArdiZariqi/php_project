@@ -55,8 +55,8 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $_SESSION['admin_id'] = $id;
                         // Set cookies for remembering username and password
                         if (isset($_POST['remember'])) {
-                            setcookie('username', $uname, time() + (30 * 24 * 60 * 60)); // 30 days
-                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60)); // 30 days
+                            setcookie('username', $uname, time() + (30 * 24 * 60 * 60));
+                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60));
                         }
                         header("Location: ../admin/index.php");
                         exit;
@@ -65,7 +65,7 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $_SESSION['student_id'] = $id;
                         if (isset($_POST['remember'])) {
                             setcookie('username', $uname, time() + (30 * 24 * 60 * 60));
-                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60)); 
+                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60));
                         }
                         header("Location: ../Student/index.php");
                         exit;
@@ -74,7 +74,7 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $_SESSION['r_user_id'] = $id;
                         if (isset($_POST['remember'])) {
                             setcookie('username', $uname, time() + (30 * 24 * 60 * 60));
-                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60)); 
+                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60));
                         }
                         header("Location: ../RegistrarOffice/index.php");
                         exit;
@@ -82,8 +82,8 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $id = $user['teacher_id'];
                         $_SESSION['teacher_id'] = $id;
                         if (isset($_POST['remember'])) {
-                            setcookie('username', $uname, time() + (30 * 24 * 60 * 60)); 
-                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60)); 
+                            setcookie('username', $uname, time() + (30 * 24 * 60 * 60));
+                            setcookie('password', $pass, time() + (30 * 24 * 60 * 60));
                         }
                         header("Location: ../Teacher/index.php");
                         exit;

@@ -137,7 +137,9 @@ function saveVerificationCode($email, $verificationCode)
 	$email = $conn->real_escape_string($email);
 	$verificationCode = $conn->real_escape_string($verificationCode);
 
+
 	$sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
+
 
 	if ($conn->query($sql) === TRUE) {
 		echo "Kodi verifikues u ruajt me sukses.";
@@ -147,4 +149,5 @@ function saveVerificationCode($email, $verificationCode)
 
 	$conn->close();
 }
+
 ?>
