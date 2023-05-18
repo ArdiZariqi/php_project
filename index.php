@@ -14,7 +14,7 @@ if ($setting != 0) {
 	<title>Welcome to <?=$setting['school_name']?></title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="logo.png">
+	<link rel="icon" href="Logo 1_a v5.png">
 </head>
 <body class="body-home">
     <div class="black-fill"><br /> <br />
@@ -23,7 +23,7 @@ if ($setting != 0) {
     	     id="homeNav">
 		  <div class="container-fluid">
 		    <a class="navbar-brand" href="#">
-		    	<img src="logo.png" width="40">
+		    	<img src="Logo 1_a v5.png" width="40">
 		    </a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@ if ($setting != 0) {
 		    </div>
 		</nav>
         <section class="welcome-text d-flex justify-content-center align-items-center flex-column">
-        	<img src="logo.png" >
+        	<img src="Logo 1_a v5.png" >
         	<h4>Welcome to <?=$setting['school_name']?></h4>
         	<p><?=$setting['slogan']?></p>
         </section>
@@ -58,13 +58,13 @@ if ($setting != 0) {
         	<div class="card mb-3 card-1">
 			  <div class="row g-0">
 			    <div class="col-md-4">
-			      <img src="logo.png" class="img-fluid rounded-start" >
+			      <img src="Logo 1_a v5.png" class="img-fluid rounded-start" >
 			    </div>
 			    <div class="col-md-8">
 			      <div class="card-body">
 			        <h5 class="card-title">About Us</h5>
 			        <p class="card-text"><?=$setting['about']?></p>
-			        <p class="card-text"><small class="text-muted">Y School</small></p>
+			        <p class="card-text"><small class="text-muted">B.I.T</small></p>
 			      </div>
 			    </div>
 			  </div>
