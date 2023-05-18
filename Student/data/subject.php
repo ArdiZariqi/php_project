@@ -40,6 +40,18 @@ function removeCourse($subject_id, $conn) {
       return 0;
   }
 }
+function getAllSubjects1($conn){
+  $sql = "SELECT * FROM subjects";
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+
+  if ($stmt->rowCount() >= 1) {
+    $subjects = $stmt->fetchAll();
+    return $subjects;
+  }else {
+    return 0;
+  }
+}
 
 
 
