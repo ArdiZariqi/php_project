@@ -48,7 +48,7 @@
 							<label class="form-check-label" for="remember">Remember Me</label>
 						</div>
 						<div>
-							<a href="forgotPw.php" class="text-decoration-none pl-5 ml-6">Forgot Password?</a>
+							<a href="forgotten.php" class="text-decoration-none pl-5 ml-6">Forgot Password?</a>
 						</div>
 					</div>
 				</div>
