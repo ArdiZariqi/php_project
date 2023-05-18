@@ -77,10 +77,10 @@ function generateVerificationCode($length = 6)
 
 function saveVerificationCode($email, $verificationCode)
 {
-    $servername = "localhost";
+    $servername = "localhost: 3307";
     $username = "root";
-    $password = "password";
-    $dbname = "database_name";
+    $password = "";
+    $dbname = "sms_db";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -88,6 +88,7 @@ function saveVerificationCode($email, $verificationCode)
     }
 
     $sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
+
     if ($conn->query($sql) === true) {
         echo "Verification code saved successfully.";
     } else {
