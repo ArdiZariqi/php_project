@@ -71,26 +71,36 @@ function removeTeacher($id, $conn){
 }
 
 // Search 
-function searchTeachers($key, $conn){
-   $key = preg_replace('/(?<!\\\)([%_])/', '\\\$1',$key);
+function searchTeachers($searchKey, $conn) {
+  $query = "SELECT * FROM teachers WHERE fname LIKE :searchKey OR lname LIKE :searchKey";
+  $stmt = $conn->prepare($query);
+  $stmt->bindValue(':searchKey', "%$searchKey%", PDO::PARAM_STR);
+  $stmt->execute();
 
-   $sql = "SELECT * FROM teachers
-           WHERE teacher_id LIKE ? 
-           OR fname LIKE ?
-           OR lname LIKE ?
-           OR username LIKE ?
-           OR employee_number LIKE ?
-           OR phone_number LIKE ?
-           OR qualification LIKE ?
-           OR email_address LIKE ?
-           OR address LIKE ?";
-   $stmt = $conn->prepare($sql);
-   $stmt->execute([$key, $key, $key, $key, $key,$key, $key, $key, $key]);
+  $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-   if ($stmt->rowCount() == 1) {
-     $teachers = $stmt->fetchAll();
-     return $teachers;
-   }else {
-    return 0;
-   }
+  if ($teachers) {
+      return $teachers;
+  } else {
+      return 0;
+  }
 }
+
+// Function to retrieve subject name by subject ID
+function getSubjectName($subjectId, $conn) {
+  $query = "SELECT subject FROM subjects WHERE subject_id = :subjectId";
+  $stmt = $conn->prepare($query);
+  $stmt->bindValue(':subjectId', $subjectId, PDO::PARAM_INT);
+  $stmt->execute();
+
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  if ($result) {
+      return $result['subject'];
+  } else {
+      return null;
+  }
+}
+
+?>
+
