@@ -1,12 +1,12 @@
 <?php 
 session_start();
-if (isset($_SESSION['admin_id']) && 
+if (isset($_SESSION['student_id']) && 
     isset($_SESSION['role'])) {
 
-    if ($_SESSION['role'] == 'Admin') {
+    if ($_SESSION['role'] == 'Student') {
        include "../DB_connection.php";
        include "data/subject.php";
-       $courses = getAllSubjects($conn);
+       $courses = getAllSubjects1($conn);
        
  ?>
 <!DOCTYPE html>
@@ -58,23 +58,6 @@ if (isset($_SESSION['admin_id']) &&
         include "inc/navbar.php";
         if ($courses != 0) {
      ?>
-     <div class="container mt-5">
-        <a href="course-add.php"
-           class="btn btn-dark">Add New Course</a>
-
-           <?php if (isset($_GET['error'])) { ?>
-            <div class="alert alert-danger mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['error']?>
-            </div>
-            <?php } ?>
-
-          <?php if (isset($_GET['success'])) { ?>
-            <div class="alert alert-info mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['success']?>
-            </div>
-            <?php } ?>
 
            <div class="table-responsive">
               <table class="table table-bordered mt-3 n-table">
@@ -83,7 +66,6 @@ if (isset($_SESSION['admin_id']) &&
                     <th scope="col">#</th>
                     <th scope="col">Course</th>
                     <th scope="col">Course Code</th>
-                    <th scope="col">Action</th>
                     
                   </tr>
                 </thead>
@@ -102,13 +84,6 @@ if (isset($_SESSION['admin_id']) &&
                           echo $course['subject_code'];
                        ?>
                     </td>
-                    <td>
-                        <a href="course-edit.php?course_id=<?=$course['subject_id']?>"
-                           class="btn btn-warning">Edit</a>
-                           
-                        <a href="course-delete.php?course_id=<?=$course['subject_id']?>"
-                           class="btn btn-danger">Delete</a>
-                  </td>
                   </tr>
                 <?php } ?>
                 </tbody>
@@ -125,7 +100,7 @@ if (isset($_SESSION['admin_id']) &&
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
     <script>
         $(document).ready(function(){
-             $("#navLinks li:nth-child(7) a").addClass('active');
+             $("#navLinks li:nth-child(2) a").addClass('active');
         });
     </script>
 

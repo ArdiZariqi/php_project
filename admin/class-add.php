@@ -77,7 +77,10 @@ if (isset($_SESSION['admin_id']) &&
                 .form-w .btn-primary:hover {
                     background-color: #3867d6;
                 }
-
+                .btn-dark {
+                 background-color: #343a40;
+                 border-color: #343a40;
+                }
                 .form-w .alert {
                     margin-bottom: 15px;
                 }

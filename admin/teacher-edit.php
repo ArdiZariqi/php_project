@@ -64,7 +64,10 @@ body {
   font-weight: 500;
   color: #333333;
 }
-
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
 .form-w .form-control {
   border-radius: 5px;
   border: 1px solid #dddddd;

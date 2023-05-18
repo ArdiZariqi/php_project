@@ -52,7 +52,10 @@ if (isset($_SESSION['admin_id']) &&
                     margin-bottom: 20px;
                     color: #333333;
                 }
-
+                .btn-dark {
+                background-color: #343a40;
+                border-color: #343a40;
+                }
                 .form-w .form-label {
                     font-weight: 500;
                     color: #333333;

@@ -48,7 +48,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
 .form-w h3 {
   font-size: 28px;
   font-weight: 600;

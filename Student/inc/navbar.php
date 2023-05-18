@@ -15,6 +15,12 @@
              href="index.php">Dashboard</a>
 </li>
         <li class="nav-item">
+          <a class="nav-link" href="availableCourses.php">Available Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="course.php">My Courses</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="pass.php">Change Password</a>
         </li>
 

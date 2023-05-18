@@ -38,7 +38,6 @@ if (isset($_SESSION['admin_id']) &&
     background-color: #23272b;
     border-color: #23272b;
   }
-
   .n-table {
     background-color: #fff;
     border-radius: 5px;

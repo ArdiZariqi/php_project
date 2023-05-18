@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (
-  isset($_SESSION['admin_id']) &&
+  isset($_SESSION['student_id']) &&
   isset($_SESSION['role'])
 ) {
 
-  if ($_SESSION['role'] == 'Admin') {
+  if ($_SESSION['role'] == 'Student') {
     include '../DB_connection.php';
 
 ?>
@@ -21,50 +21,8 @@ if (
       <link rel="icon" href="../logo.png">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f7f7f7;
-        }
-        .container {
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #fff;
-          border-radius: 5px;
-          box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .btn-go-back {
-          margin-bottom: 10px;
-          background-color: #212529;
-        }
-        .form-w h3 {
-          margin-bottom: 20px;
-          text-align: center;
-          background-color: #343a40;
-          color: #fff;
-          padding: 10px;
-        }
-        .form-w hr {
-          border-top: 1px solid #ccc;
-        }
-        .btn-dark {
-         background-color: #343a40;
-         border-color: #343a40;
-        }
-        .alert {
-          margin-top: 10px;
-        }
-        .btn-primary {
-          background-color: #3867d6;
-          border-color: #4caf50;
-        }
-        .btn-primary:hover {
-          background-color: #45a049;
-          border-color: #45a049;
-        }
-      </style>
     </head>
+
     <body>
       <?php
       include "inc/navbar.php";

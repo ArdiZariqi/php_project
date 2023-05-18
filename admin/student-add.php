@@ -102,7 +102,10 @@ body {
 .form-w .alert {
   margin-bottom: 15px;
 }
-
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
 .form-w .row-cols-5 {
   column-gap: 10px;
 }
