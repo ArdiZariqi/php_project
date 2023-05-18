@@ -70,11 +70,7 @@
 			<br /><br />
 			<div class="text-center text-light">
 				<?php
-<<<<<<< HEAD
 				$pass = 100;
-=======
-				$pass = 1234;
->>>>>>> 3b92852515a49c846cc88912356bea0e7925f37e
 				$pass = password_hash($pass, PASSWORD_DEFAULT);
 				echo $pass;
 				?>
