@@ -1,35 +1,35 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$email = $_POST['email_address'];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// 	$email = $_POST['email_address'];
 
-	if (checkEmailExists($email)) {
+// 	if (checkEmailExists($email)) {
 
-		$verificationCode = generateVerificationCode();
-		saveVerificationCode($email, $verificationCode);
+// 		$verificationCode = generateVerificationCode();
+// 		saveVerificationCode($email, $verificationCode);
 
-		$smtpServer = 'smtp.sendgrid.net';
-		$smtpPort = 465;
-		$smtpUsername = 'apikey';
-		$smtpPassword = 'nnoreply250';
-		$smtpEncryption = 'tls';
+// 		$smtpServer = 'smtp.sendgrid.net';
+// 		$smtpPort = 465;
+// 		$smtpUsername = 'apikey';
+// 		$smtpPassword = 'nnoreply250';
+// 		$smtpEncryption = 'tls';
 
-		$subject = 'Password Reset Code';
-		$message = 'Your password reset code is: ' . $verificationCode;
-		$from = 'nnoreply250@gmail.com';
-		$headers = 'From: ' . $from . "\r\n" .
-			'Reply-To: ' . $from . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
+// 		$subject = 'Password Reset Code';
+// 		$message = 'Your password reset code is: ' . $verificationCode;
+// 		$from = 'nnoreply250@gmail.com';
+// 		$headers = 'From: ' . $from . "\r\n" .
+// 			'Reply-To: ' . $from . "\r\n" .
+// 			'X-Mailer: PHP/' . phpversion();
 
-		if (mail($email, $subject, $message, $headers)) {
-			header('Location: verify_code.php?email=' . $email);
-			exit;
-		} else {
-			$error = 'Email sending failed. Please try again.';
-		}
-	} else {
-		$error = 'Email not found. Please enter a valid email address.';
-	}
-}
+// 		if (mail($email, $subject, $message, $headers)) {
+// 			header('Location: verify_code.php?email=' . $email);
+// 			exit;
+// 		} else {
+// 			$error = 'Email sending failed. Please try again.';
+// 		}
+// 	} else {
+// 		$error = 'Email not found. Please enter a valid email address.';
+// 	}
+// }
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="body-login">
 	<div class="black-fill"><br /> <br />
 		<div class="d-flex justify-content-center align-items-center flex-column">
-			<form class="login" method="post" action="">
+			<form class="login" method="post" action="forgot.php">
 				<div class="text-center">
 					<img src="Logo 1_a v5.png" width="200" height="200">
 				</div>
@@ -75,79 +75,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
-
-<?php
-function checkEmailExists($email)
-{
-	$servername = "localhost: 3307";
-	$username = "root";
-	$password = "";
-	$dbname = "sms_db";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	if ($conn->connect_error) {
-		die("Lidhja me bazën e të dhënave dështoi: " . $conn->connect_error);
-	}
-
-	$email = $conn->real_escape_string($email);
-	$sql = "SELECT * FROM admin WHERE email_address = '$email'";
-	$result = $conn->query($sql);
-
-	if ($result->num_rows > 0) {
-		$conn->close();
-		return true;
-	} else {
-		$conn->close();
-		return false;
-	}
-}
-
-
-function generateVerificationCode($length = 6)
-{
-	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$characterCount = strlen($characters);
-
-	$code = '';
-	for ($i = 0; $i < $length; $i++) {
-		$randomIndex = random_int(0, $characterCount - 1);
-		$code .= $characters[$randomIndex];
-	}
-
-	return $code;
-}
-
-
-
-function saveVerificationCode($email, $verificationCode)
-{
-
-	$servername = "localhost: 3307";
-	$username = "root";
-	$password = "";
-	$dbname = "sms_db";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	if ($conn->connect_error) {
-		die("Lidhja me bazën e të dhënave dështoi: " . $conn->connect_error);
-	}
-
-	$email = $conn->real_escape_string($email);
-	$verificationCode = $conn->real_escape_string($verificationCode);
-
-
-	$sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
-
-
-	if ($conn->query($sql) === TRUE) {
-		echo "Kodi verifikues u ruajt me sukses.";
-	} else {
-		echo "Gabim gjatë ruajtjes së kodit verifikues: " . $conn->error;
-	}
-
-	$conn->close();
-}
-
-?>
