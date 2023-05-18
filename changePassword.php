@@ -26,10 +26,10 @@
 
                 <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
-                    <input type="email" class="form-control" name="confirm_password">
+                    <input type="password" class="form-control" name="confirm_password">
                 </div>
                 <div class="mb-3">
-                    <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
+                    <!-- <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>"> -->
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" style="width: 200px;">Change Password</button>

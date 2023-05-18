@@ -63,7 +63,7 @@ if ($response !== false) {
 
 function checkEmailExists($email)
 {
-    $servername = "localhost: 3310";
+    $servername = "localhost: 3307";
     $username = "root";
     $password = "";
     $dbname = "sms_db";
@@ -103,7 +103,7 @@ function generateVerificationCode($length = 6)
 
 function saveVerificationCode($email, $verificationCode)
 {
-    $servername = "localhost: 3310";
+    $servername = "localhost: 3307";
     $username = "root";
     $password = "";
     $dbname = "sms_db";
