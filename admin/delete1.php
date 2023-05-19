@@ -13,6 +13,6 @@ if (isset($_GET["id"])) {
     $statement->execute([$id]);
 
     // redirect back to the main page after deletion
-    header("Location: index.php");
+    header("Location: indexfaq.php");
     exit();
 }

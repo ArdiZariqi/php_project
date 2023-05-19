@@ -33,6 +33,9 @@
           <a class="nav-link" href="message.php">Message</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="indexfaq.php">FAQ</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="settings.php">Settings</a>
         </li>
       </ul>

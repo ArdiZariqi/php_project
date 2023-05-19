@@ -29,7 +29,7 @@
 		]);
 
 		// redirect back to previous page
-		header("Location: " . $_SERVER["HTTP_REFERER"]);
+		header("Location:indexfaq.php ");
 	}
 
 ?>
@@ -70,6 +70,7 @@
 
 				<!-- submit button -->
 				<input type="submit" name="submit" class="btn btn-warning" value="Edit FAQ" />
+				<button><a href="indexfaq.php" class="btn ">Go Back</a></button>
 			</form>
 		</div>
 	</div>

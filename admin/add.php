@@ -43,6 +43,7 @@ $conn = new PDO("mysql:host=localhost;port=3307;dbname=sms_db", "root", "");
 <script src="richtext/jquery.richtext.js"></script>
 
 <!-- layout for form to add FAQ -->
+
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
 	<div class="row">
 		<div class="offset-md-3 col-md-6">
@@ -65,6 +66,7 @@ $conn = new PDO("mysql:host=localhost;port=3307;dbname=sms_db", "root", "");
 
 				<!-- submit button -->
 				<input type="submit" name="submit" class="btn btn-info" value="Add FAQ" />
+				<button><a href="indexfaq.php" class="btn ">Go Back</a></button>
 			</form>
 		</div>
 	</div>

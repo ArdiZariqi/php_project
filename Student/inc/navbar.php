@@ -19,7 +19,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="indexfaq.php">FAQ</a>
+          <a class="nav-link" href="FAQ.php">FAQ</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="pass.php">Change Password</a>
