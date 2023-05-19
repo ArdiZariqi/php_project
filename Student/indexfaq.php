@@ -30,21 +30,34 @@ $statement->execute();
 $faqs = $statement->fetchAll();
 
 ?>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/footer.css">
+      <link rel="icon" href="../Logo 1_a v5.png">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="richtext/richtext.min.css" />
+<link rel="stylesheet" type="../css/footer.css">
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="richtext/jquery.richtext.js"></script>
 <style>
-    body{
-        background-color: #f5f5f5;
-    }
-        .container {
+        .container-main {
             margin-top: 50px;
             margin-bottom: 50px;
+        }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
         }
         h1 {
             text-align: center;
@@ -82,7 +95,7 @@ $faqs = $statement->fetchAll();
             border-bottom: 1px solid #ddd;
         }
         .table th {
-            background-color: #f5f5f5;
+            background-color: #f7f7f7;
             text-align: left;
             font-weight: bold;
         }
@@ -99,11 +112,12 @@ $faqs = $statement->fetchAll();
         }
     </style>
 </head>
+<body>
 <?php 
         include "inc/navbar.php";
      ?>
 
-<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+<div class="container-main" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1 class="text-center">Add FAQ</h1>
@@ -156,7 +170,53 @@ $faqs = $statement->fetchAll();
         </div>
     </div>
 </div>
+</body>
+<footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify"> <i>BIT </i> is an initiative to help the upcoming programmers with the code. <i>BIT</i> focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li>C</a></li>
+              <li>C++</a></li>
+              <li>HTML</a></li>
+              <li>Java</a></li>
+              <li>CSS</a></li>
+              <li>Bootstrap</a></li>
+            </ul>
+          </div>
 
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+</html>
 <script>
     $(document).ready(function() {
         $('#answer').richText();
@@ -218,7 +278,7 @@ $faqs = $statement->fetchAll();
         margin-left: auto;
         margin-right: auto;
     }
-    .container {
+    .container-main {
         margin-top: 100px;
         margin-bottom: 100px;
     }
