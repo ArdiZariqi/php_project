@@ -263,6 +263,18 @@ body {
               }
             ?>
             <?php } ?>
+            <?php foreach ($classes as $class): ?>
+            <div class="col">
+              <input type="checkbox"
+                     name="classes[]"
+                     value="<?=$class['class_id']?>">
+                     <?php 
+                        $section = getSectioById($class['section'], $conn); 
+                      ?>
+                     <?=$section['section']?>
+            </div>
+            <?php endforeach ?>
+            
              
           </div>
         </div>
