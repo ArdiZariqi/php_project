@@ -1,18 +1,19 @@
 <?php
 
-	// connect with database
-	$conn = new PDO("mysql:host=localhost:3307;dbname=sms_db", "root", "");
+// connect with database
+$conn = new PDO("mysql:host=localhost:3307;dbname=sms_db", "root", "");
 
-	// fetch all FAQs from database
-	$sql = "SELECT * FROM faqs";
-	$statement = $conn->prepare($sql);
-	$statement->execute();
-	$faqs = $statement->fetchAll();
+// fetch all FAQs from database
+$sql = "SELECT * FROM faqs";
+$statement = $conn->prepare($sql);
+$statement->execute();
+$faqs = $statement->fetchAll();
 
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>FAQ Questions and Answers</title>
 
@@ -93,15 +94,16 @@
         }
     </style>
 </head>
+
 <body>
-      <?php
-      include "inc/navbar.php";
-      ?>
-      
+    <?php
+    include "inc/navbar.php";
+    ?>
+
     <div class="container">
         <h2>FAQ Questions and Answers</h2>
         <div class="panel-group" id="accordion_one">
-            <?php foreach ($faqs as $faq): ?>
+            <?php foreach ($faqs as $faq) : ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -126,4 +128,5 @@
     <script src="../admin/js/jquery-3.3.1.min.js"></script>
     <script src="../admin/js/bootstrap.js"></script>
 </body>
+
 </html>
