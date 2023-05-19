@@ -13,7 +13,7 @@
 <body class="body-login">
 	<div class="black-fill"><br /> <br />
 		<div class="d-flex justify-content-center align-items-center flex-column">
-			<form class="login" method="post" action="verifyCode.php" autocomplete="off">
+			<form class="login" method="post" action="changePassword.php" autocomplete="off">
 				<div class="text-center">
 					<img src="Logo 1_a v5.png" width="200" height="200">
 				</div>

@@ -2,29 +2,22 @@
 session_start();
 if (isset($_SESSION['student_id']) && 
     isset($_SESSION['role'])     &&
-    isset($_GET['course_id'])) {
+    isset($_POST['course_id'])) {
 
   if ($_SESSION['role'] == 'Student') {
      include "../DB_connection.php";
      include "data/subject.php";
 
-     $id = $_GET['course_id'];
+     $id = $_POST['course_id'];
      if (removeCourse($id, $conn)) {
-     	$sm = "Successfully deleted!";
-        header("Location: course.php?success=$sm");
-        exit;
-     }else {
-        $em = "Unknown error occurred";
-        header("Location: course.php?error=$em");
-        exit;
+        echo "success";
+     } else {
+        echo "error";
      }
-
-
-  }else {
-    header("Location: course.php");
-    exit;
-  } 
-}else {
-	header("Location: course.php");
-	exit;
-} 
+  } else {
+    echo "access denied";
+  }
+} else {
+    echo "access denied";
+}
+?>

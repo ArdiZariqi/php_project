@@ -1,35 +1,51 @@
 <?php
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-// 	$email = $_POST['email_address'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$email = $_POST['mail'];
 
-// 	if (checkEmailExists($email)) {
+	if (checkEmailExists($email)) {
 
-// 		$verificationCode = generateVerificationCode();
-// 		saveVerificationCode($email, $verificationCode);
+		$verificationCode = generateVerificationCode();
+		saveVerificationCode($email, $verificationCode);
 
-// 		$smtpServer = 'smtp.sendgrid.net';
-// 		$smtpPort = 465;
-// 		$smtpUsername = 'apikey';
-// 		$smtpPassword = 'nnoreply250';
-// 		$smtpEncryption = 'tls';
+		$apiUrl = 'https://api.elasticemail.com/v2/email/send';
+		$apiKey = '8EC99B83A7ACB1D1E568C49BEC213FA207AFB54F3D6C44F4274415B111BC725067FCC77259B9A01CEB742ECAADAB0F00';
+		$fromEmail = 'zariqiardi@gmail.com';
+		$subject = 'Password Reset Code';
+		$message = 'Your password reset code is: ' . $verificationCode;
 
-// 		$subject = 'Password Reset Code';
-// 		$message = 'Your password reset code is: ' . $verificationCode;
-// 		$from = 'nnoreply250@gmail.com';
-// 		$headers = 'From: ' . $from . "\r\n" .
-// 			'Reply-To: ' . $from . "\r\n" .
-// 			'X-Mailer: PHP/' . phpversion();
+		$data = array(
+			'apikey' => $apiKey,
+			'from' => $fromEmail,
+			'subject' => $subject,
+			'body' => $message,
+			'to' => $email
+		);
 
-// 		if (mail($email, $subject, $message, $headers)) {
-// 			header('Location: verify_code.php?email=' . $email);
-// 			exit;
-// 		} else {
-// 			$error = 'Email sending failed. Please try again.';
-// 		}
-// 	} else {
-// 		$error = 'Email not found. Please enter a valid email address.';
-// 	}
-// }
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $apiUrl);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$response = curl_exec($ch);
+
+		if ($response !== false) {
+			$responseData = json_decode($response);
+			if ($responseData->success) {
+				header('Location: verify_code.php?email=' . $email);
+				exit;
+			} else {
+				$error = 'Email sending failed. Please try again.';
+			}
+		} else {
+			$error = 'Email sending failed. Please try again.';
+		}
+
+		curl_close($ch);
+	} else {
+		$error = 'Email not found. Please enter a valid email address.';
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +75,7 @@
 				<?php } ?>
 				<div class="mb-3">
 					<label class="form-label">Email Address</label>
-					<input type="email" class="form-control" name="email_address" required>
+					<input type="email" class="form-control" name="mail" required>
 				</div>
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary" style="width: 200px;">Send Verification Code</button>
@@ -75,3 +91,68 @@
 </body>
 
 </html>
+
+<?php
+function checkEmailExists($email)
+{
+	$servername = "localhost: 3307";
+	$username = "root";
+	$password = "";
+	$dbname = "sms_db";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	if ($conn->connect_error) {
+		die("Lidhja me bazën e të dhënave dështoi: " . $conn->connect_error);
+	}
+
+	$email = $conn->real_escape_string($email);
+	$sql = "SELECT * FROM admin WHERE email_address = '$email'";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		$conn->close();
+		return true;
+	} else {
+		$conn->close();
+		return false;
+	}
+}
+
+function generateVerificationCode($length = 6)
+{
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$code = '';
+
+	$characterCount = strlen($characters);
+	for ($i = 0; $i < $length; $i++) {
+		$randomIndex = rand(0, $characterCount - 1);
+		$code .= $characters[$randomIndex];
+	}
+
+	return $code;
+}
+
+function saveVerificationCode($email, $verificationCode)
+{
+	$servername = "localhost: 3307";
+	$username = "root";
+	$password = "";
+	$dbname = "sms_db";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
+
+	if ($conn->query($sql) === true) {
+		echo "Verification code saved successfully.";
+	} else {
+		echo "Error saving verification code: " . $conn->error;
+	}
+
+	$conn->close();
+}
+?>
