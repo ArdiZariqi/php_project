@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (
-  isset($_SESSION['teacher_id']) &&
+  isset($_SESSION['r_user_id']) &&
   isset($_SESSION['role'])
 ) {
 
