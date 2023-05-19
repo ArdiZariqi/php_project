@@ -70,7 +70,7 @@
 			<br /><br />
 			<div class="text-center text-light">
 				<?php
-				$pass = 100;
+				$pass = 1001;
 				$pass = password_hash($pass, PASSWORD_DEFAULT);
 				echo $pass;
 				?>
