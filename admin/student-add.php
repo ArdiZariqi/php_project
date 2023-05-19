@@ -242,15 +242,19 @@ if (
               type: $(this).attr('method'),
               data: formData,
               success: function(response) {
-
-                console.log(response);
-
+              var responseData = JSON.parse(response);
+              if (responseData.status === 'success') {
+                alert("Student registered successfully");
+                
+              } else {
+                alert("Registration failed");
+              }
               },
               error: function() {
-
+                alert("Registration failed");
                 console.error('Ajax request error');
-
               }
+
             });
           });
 
