@@ -13,12 +13,16 @@
 <body class="body-login">
     <div class="black-fill"><br /> <br />
         <div class="d-flex justify-content-center align-items-center flex-column">
-            <form class="login" method="post" action="">
+            <form class="login" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
                 <div class="text-center">
                     <img src="Logo 1_a v5.png" width="200" height="200">
                 </div>
                 <h2 style="text-align: center;">Change Password</h2>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name="uname">
+                </div>
                 <div class="mb-3">
                     <label class="form-label">New Password</label>
                     <input type="password" class="form-control" name="new_password">
@@ -28,9 +32,7 @@
                     <label class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" name="confirm_password">
                 </div>
-                <div class="mb-3">
-                    <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" style="width: 200px;">Change Password</button>
                 </div>
@@ -39,13 +41,56 @@
                 </div>
             </form>
 
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Retrieve the username from the form
+                $uname = $_POST['uname'];
+
+                // Retrieve the new password and confirm password from the form
+                $newPassword = $_POST['new_password'];
+                $confirmPassword = $_POST['confirm_password'];
+
+                // Validate the new password and confirm password
+                if ($newPassword !== $confirmPassword) {
+                    echo "<div class='alert alert-danger' role='alert'>New password and confirm password do not match.</div>";
+                } else {
+
+                    $servername = "localhost:3307";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "sms_db";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Check if the username exists
+                    $checkUsernameQuery = "SELECT username FROM admin WHERE username = '$uname'";
+                    $checkUsernameResult = $conn->query($checkUsernameQuery);
+
+                    if ($checkUsernameResult->num_rows === 0) {
+                        echo "<div class='alert alert-danger' role='alert'>Invalid username.</div>";
+                    } else {
+                        $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                        $sql = "UPDATE admin SET password = '$newPasswordHashed' WHERE username = '$uname'";
+
+                        if ($conn->query($sql) === TRUE) {
+                            echo "<div class='alert alert-success' role='alert'>Password updated successfully.</div>";
+                            echo "<script>setTimeout(function() { window.location.href = 'login.php'; }, 3000);</script>";
+                        } else {
+                            echo "<div class='alert alert-danger' role='alert'>Error updating password: " . $conn->error . "</div>";
+                        }
+                    }
+
+                    $conn->close();
+                }
+            }
+            ?>
+
             <br /><br />
             <div class="text-center text-light">
-                <?php
-                $pass = 895;
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
-                echo $pass;
-                ?>
                 <p>&copy; 2023 Besa iTech. All rights reserved.</p>
             </div>
         </div>
@@ -54,38 +99,3 @@
 </body>
 
 </html>
-
-<?php
-function saveNewPassword($email, $newPassword)
-{
-    // Kryeni lidhjen me bazën e të dhënave
-    $servername = "localhost: 3307";
-    $username = "root";
-    $password = "";
-    $dbname = "sms_db";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Kontrolloni lidhjen
-    if ($conn->connect_error) {
-        die("Lidhja me bazën e të dhënave dështoi: " . $conn->connect_error);
-    }
-
-    // Hash fjalëkalimin e ri për siguri
-    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-
-    // Përgatitni query-n për të azhurnuar fjalëkalimin në bazën e të dhënave
-    $sql = "UPDATE admin SET password = '$hashedPassword' WHERE email_address = '$email'";
-
-    // Ekzekutoni query-n
-    if ($conn->query($sql) === TRUE) {
-        echo "Paswordin u nderrua me sukses.";
-    } else {
-        echo "Gabim gjatë azhurnimit të fjalëkalimit: " . $conn->error;
-    }
-
-    // Mbylleni lidhjen me bazën e të dhënave
-    $conn->close();
-}
-
-?>

@@ -7,7 +7,7 @@
 	<title>Login - Besa iTech</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="logo 1_a v5.png">
+	<link rel="icon" href="Logo 1_a v5.png">
 </head>
 
 <body class="body-login">

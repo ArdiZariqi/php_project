@@ -18,7 +18,7 @@ if (
       <title>Admin - Add Course</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="../css/style.css">
-      <link rel="icon" href="../logo.png">
+      <link rel="icon" href="../Logo 1_a v5.png">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <style>
@@ -26,6 +26,7 @@ if (
           font-family: Arial, sans-serif;
           background-color: #f7f7f7;
         }
+
         .container {
           max-width: 600px;
           margin: 0 auto;
@@ -34,10 +35,12 @@ if (
           border-radius: 5px;
           box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
         }
+
         .btn-go-back {
           margin-bottom: 10px;
           background-color: #212529;
         }
+
         .form-w h3 {
           margin-bottom: 20px;
           text-align: center;
@@ -45,26 +48,32 @@ if (
           color: #fff;
           padding: 10px;
         }
+
         .form-w hr {
           border-top: 1px solid #ccc;
         }
+
         .btn-dark {
-         background-color: #343a40;
-         border-color: #343a40;
+          background-color: #343a40;
+          border-color: #343a40;
         }
+
         .alert {
           margin-top: 10px;
         }
+
         .btn-primary {
           background-color: #3867d6;
           border-color: #4caf50;
         }
+
         .btn-primary:hover {
           background-color: #45a049;
           border-color: #45a049;
         }
       </style>
     </head>
+
     <body>
       <?php
       include "inc/navbar.php";
