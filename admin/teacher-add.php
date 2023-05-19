@@ -10,9 +10,8 @@ if (
     include "../DB_connection.php";
     include "data/subject.php";
     include "data/section.php";
-    include "data/class.php";
     $subjects = getAllSubjects($conn);
-    $classes = getAllClasses($conn);
+    $sections = getAllSections($conn);
 
 
     $fname = '';
@@ -222,14 +221,11 @@ if (
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label">Class</label>
+            <label class="form-label">Section</label>
             <div class="row row-cols-5">
-              <?php foreach ($classes as $class) : ?>
+              <?php foreach ($sections as $section) : ?>
                 <div class="col">
-                  <input type="checkbox" name="classes[]" value="<?= $class['class_id'] ?>">
-                  <?php
-                  $section = getSectioById($class['section'], $conn);
-                  ?>
+                  <input type="radio" name="section" value="<?= $section['section_id'] ?>">
                   <?= $section['section'] ?>
                 </div>
               <?php endforeach ?>
