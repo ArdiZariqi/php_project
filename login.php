@@ -70,9 +70,9 @@
 			<br /><br />
 			<div class="text-center text-light">
 				<?php
-				$pass = 1001;
-				$pass = password_hash($pass, PASSWORD_DEFAULT);
-				echo $pass;
+				// $pass = 1001;
+				// $pass = password_hash($pass, PASSWORD_DEFAULT);
+				// echo $pass;
 				?>
 				<p>&copy; 2023 Besa iTech. All rights reserved.</p>
 			</div>
