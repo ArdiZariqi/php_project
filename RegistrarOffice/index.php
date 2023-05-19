@@ -110,7 +110,9 @@ if (
     </head>
 
     <body>
-
+      <?php
+      include "inc/navbar.php";
+      ?>
       <div class="container mt-5">
         <div class="container text-center">
           <div class="row row-cols-5">
