@@ -24,7 +24,7 @@ if ($setting != 0) {
 				<nav class="navbar navbar-expand-lg bg-light" id="homeNav">
 					<div class="container-fluid">
 						<a class="navbar-brand" href="#">
-							<img src="Logo 1_a v5.png" width="40">
+							<img src="Logo 1_a v5.png" width="60">
 						</a>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
