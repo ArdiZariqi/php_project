@@ -66,7 +66,7 @@
                     }
 
                     // Check if the username exists
-                    $checkUsernameQuery = "SELECT username FROM teachers WHERE username = '$uname'";
+                    $checkUsernameQuery = "SELECT username FROM admin WHERE username = '$uname'";
                     $checkUsernameResult = $conn->query($checkUsernameQuery);
 
                     if ($checkUsernameResult->num_rows === 0) {
@@ -74,7 +74,7 @@
                     } else {
                         $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
 
-                        $sql = "UPDATE teachers SET password = '$newPasswordHashed' WHERE username = '$uname'";
+                        $sql = "UPDATE admin SET password = '$newPasswordHashed' WHERE username = '$uname'";
 
                         if ($conn->query($sql) === TRUE) {
                             echo "<div class='alert alert-success' role='alert'>Password updated successfully.</div>";
