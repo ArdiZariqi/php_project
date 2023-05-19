@@ -235,12 +235,12 @@ $faqs = $statement->fetchAll();
             $("#navLinks li:nth-child(9) a").addClass('active');
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#answer').richText();
+        });
+    </script>
 </body>
 
 
 </html>
-<script>
-    $(document).ready(function() {
-        $('#answer').richText();
-    });
-</script>
