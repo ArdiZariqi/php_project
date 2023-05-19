@@ -1,9 +1,7 @@
 <?php
 
-	// connect with database
 	$conn = new PDO("mysql:host=localhost;port=3307;dbname=sms_db", "root", "");
 
-	// check if FAQ exists
 	$sql = "SELECT * FROM faqs WHERE id = ?";
 	$statement = $conn->prepare($sql);
 	$statement->execute([
@@ -16,10 +14,8 @@
 		die("FAQ not found");
 	}
 
-	// check if edit form is submitted
 	if (isset($_POST["submit"]))
 	{
-		// update the FAQ in database
 		$sql = "UPDATE faqs SET question = ?, answer = ? WHERE id = ?";
 		$statement = $conn->prepare($sql);
 		$statement->execute([
@@ -28,7 +24,6 @@
 			$_POST["id"]
 		]);
 
-		// redirect back to previous page
 		header("Location: " . $_SERVER["HTTP_REFERER"]);
 	}
 
@@ -39,10 +34,71 @@
 <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="richtext/richtext.min.css" />
 
+
 <!-- include JS -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="richtext/jquery.richtext.js"></script>
+<style>
+    body{
+        background-color: #f5f5f5;
+    }
+        .container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .table th,
+        .table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .table th {
+            background-color: #f5f5f5;
+            text-align: left;
+            font-weight: bold;
+        }
+        .btn-warning,
+        .btn-danger {
+            color: #fff;
+            margin-right: 5px;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+    </style>
 
 <!-- layout for form to edit FAQ -->
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
