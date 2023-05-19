@@ -90,7 +90,7 @@ if (
     <body>
       <?php
       include "inc/navbar.php";
-      if ($students != 0) {
+      if ($students != -1) {
       ?>
         <div class="container mt-5">
           <a href="student-add.php" class="btn btn-dark">Add New Student</a>
