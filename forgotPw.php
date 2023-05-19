@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<title>Forgot Password - Besa iTech</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="logo.png">
+	<link rel="icon" href="Logo 1_a v5.png">
 </head>
 
 <body class="body-login">
@@ -107,7 +107,7 @@ function checkEmailExists($email)
 	}
 
 	$email = $conn->real_escape_string($email);
-	$sql = "SELECT * FROM teachers WHERE email_address = '$email'";
+	$sql = "SELECT * FROM admin WHERE email_address = '$email'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -145,7 +145,7 @@ function saveVerificationCode($email, $verificationCode)
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "UPDATE teachers SET activation = '$verificationCode' WHERE email_address = '$email'";
+	$sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
 
 	if ($conn->query($sql) === true) {
 		echo "Verification code saved successfully.";

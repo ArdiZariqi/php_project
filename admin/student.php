@@ -1,183 +1,177 @@
-<?php 
+<?php
 session_start();
-if (isset($_SESSION['admin_id']) && 
-    isset($_SESSION['role'])) {
+if (
+  isset($_SESSION['admin_id']) &&
+  isset($_SESSION['role'])
+) {
 
-    if ($_SESSION['role'] == 'Admin') {
-       include "../DB_connection.php";
-       include "data/student.php";
-       $students = getAllStudents($conn);
- ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin - Students</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/footer.css">
-	<link rel="icon" href="../logo.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  if ($_SESSION['role'] == 'Admin') {
+    include "../DB_connection.php";
+    include "data/student.php";
+    $students = getAllStudents($conn);
+?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-  .btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
-  }
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Admin - Students</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/footer.css">
+      <link rel="icon" href="../Logo 1_a v5.png">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+        body {
+          background-color: #f5f5f5;
+        }
 
-  .btn-dark:hover {
-    background-color: #23272b;
-    border-color: #23272b;
-  }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+        }
 
-  .n-table {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
+        .btn-dark {
+          background-color: #343a40;
+          border-color: #343a40;
+        }
 
-  .table {
-    background-color: #fff;
-  }
+        .btn-dark:hover {
+          background-color: #23272b;
+          border-color: #23272b;
+        }
 
-  .table thead th {
-    background-color: #343a40;
-    color: #fff;
-  }
+        .n-table {
+          background-color: #fff;
+          border-radius: 5px;
+          padding: 20px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-  .table-bordered th,
-   .table-bordered td {
-    border-color: #dee2e6;
-  }
+        .table {
+          background-color: #fff;
+        }
 
-  .alert {
-    margin-top: 20px;
-  }
+        .table thead th {
+          background-color: #343a40;
+          color: #fff;
+        }
 
-  .w-450 {
-    width: 450px;
-  }
+        .table-bordered th,
+        .table-bordered td {
+          border-color: #dee2e6;
+        }
 
-  .mt-5 {
-    margin-top: 5rem;
-  }
+        .alert {
+          margin-top: 20px;
+        }
 
-  .m-5 {
-    margin: 5rem;
-  }
+        .w-450 {
+          width: 450px;
+        }
 
-  .active {
-    color: #fff;
-  }
-</style>
-</head>
-<body>
-    <?php 
-        include "inc/navbar.php";
-        if ($students != 0) {
-     ?>
-     <div class="container mt-5">
-        <a href="student-add.php"
-           class="btn btn-dark">Add New Student</a>
-           <form action="student-search.php" 
-                 class="mt-3 n-table"
-                 method="get">
-             <div class="input-group mb-3">
-                <input type="text" 
-                       class="form-control"
-                       name="searchKey"
-                       placeholder="Search...">
-                <button class="btn btn-primary">
-                        <i class="fa fa-search" 
-                           aria-hidden="true"></i>
-                      </button>
-             </div>
-           </form>
+        .mt-5 {
+          margin-top: 5rem;
+        }
 
-           <?php if (isset($_GET['error'])) { ?>
-            <div class="alert alert-danger mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['error']?>
+        .m-5 {
+          margin: 5rem;
+        }
+
+        .active {
+          color: #fff;
+        }
+      </style>
+    </head>
+
+    <body>
+      <?php
+      include "inc/navbar.php";
+      if ($students != 0) {
+      ?>
+        <div class="container mt-5">
+          <a href="student-add.php" class="btn btn-dark">Add New Student</a>
+          <form action="student-search.php" class="mt-3 n-table" method="get">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="searchKey" placeholder="Search...">
+              <button class="btn btn-primary">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
             </div>
-            <?php } ?>
+          </form>
+
+          <?php if (isset($_GET['error'])) { ?>
+            <div class="alert alert-danger mt-3 n-table" role="alert">
+              <?= $_GET['error'] ?>
+            </div>
+          <?php } ?>
 
           <?php if (isset($_GET['success'])) { ?>
-            <div class="alert alert-info mt-3 n-table" 
-                 role="alert">
-              <?=$_GET['success']?>
+            <div class="alert alert-info mt-3 n-table" role="alert">
+              <?= $_GET['success'] ?>
             </div>
-            <?php } ?>
+          <?php } ?>
 
-           <div class="table-responsive">
-              <table class="table table-bordered mt-3 n-table">
-                <thead>
+          <div class="table-responsive">
+            <table class="table table-bordered mt-3 n-table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $i = 0;
+                foreach ($students as $student) {
+                  $i++;  ?>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $i = 0; foreach ($students as $student ) { 
-                    $i++;  ?>
-                  <tr>
-                    <th scope="row"><?=$i?></th>
-                    <td><?=$student['student_id']?></td>
+                    <th scope="row"><?= $i ?></th>
+                    <td><?= $student['student_id'] ?></td>
                     <td>
-                      <a href="student-view.php?student_id=<?=$student['student_id']?>">
-                        <?=$student['fname']?>
+                      <a href="student-view.php?student_id=<?= $student['student_id'] ?>">
+                        <?= $student['fname'] ?>
                       </a>
                     </td>
-                    <td><?=$student['lname']?></td>
-                    <td><?=$student['username']?></td>
-                   
+                    <td><?= $student['lname'] ?></td>
+                    <td><?= $student['username'] ?></td>
+
                     <td>
-                        <a href="student-edit.php?student_id=<?=$student['student_id']?>"
-                           class="btn btn-warning">Edit</a>
-                        <a href="student-delete.php?student_id=<?=$student['student_id']?>"
-                           class="btn btn-danger">Delete</a>
+                      <a href="student-edit.php?student_id=<?= $student['student_id'] ?>" class="btn btn-warning">Edit</a>
+                      <a href="student-delete.php?student_id=<?= $student['student_id'] ?>" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
                 <?php } ?>
-                </tbody>
-              </table>
-           </div>
-         <?php }else{ ?>
-             <div class="alert alert-info .w-450 m-5" 
-                  role="alert">
-                Empty!
-              </div>
-         <?php } ?>
-     </div>
-     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>	
-    <script>
-        $(document).ready(function(){
-             $("#navLinks li:nth-child(3) a").addClass('active');
-        });
-    </script>
+              </tbody>
+            </table>
+          </div>
+        <?php } else { ?>
+          <div class="alert alert-info .w-450 m-5" role="alert">
+            Empty!
+          </div>
+        <?php } ?>
+        </div>
 
-</body>
-<footer class="site-footer">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          $(document).ready(function() {
+            $("#navLinks li:nth-child(3) a").addClass('active');
+          });
+        </script>
+
+    </body>
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <h6>About</h6>
-            <p class="text-justify"> <i>BIT </i> is an initiative  to help the upcoming programmers with the code. <i>BIT</i> focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+            <p class="text-justify"> <i>BIT </i> is an initiative to help the upcoming programmers with the code. <i>BIT</i> focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
           </div>
           <div class="col-xs-6 col-md-3">
             <h6>Categories</h6>
@@ -211,22 +205,23 @@ if (isset($_SESSION['admin_id']) &&
               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
             </ul>
           </div>
         </div>
       </div>
-</footer>
-</html>
-<?php 
+    </footer>
 
-  }else {
+    </html>
+<?php
+
+  } else {
     header("Location: ../login.php");
     exit;
-  } 
-}else {
-	header("Location: ../login.php");
-	exit;
-} 
+  }
+} else {
+  header("Location: ../login.php");
+  exit;
+}
 
 ?>
