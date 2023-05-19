@@ -139,7 +139,7 @@ if (
 
     <body>
       <div class="container mt-5">
-        <a href="student.php" class="btn btn-dark">Go Back</a>
+        <a href="index.php" class="btn btn-dark">Go Back</a>
 
         <form method="post" class="shadow p-3 mt-5 form-w" action="req/student-add.php">
           <h3>Add New Student</h3>
