@@ -160,6 +160,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['role'])) {
 
             <script>
                 $(document).ready(function() {
+                    $("#navLinks li:nth-child(2) a").addClass('active');
                     $('.n-table').on('input', 'input[name="searchKey"]', function() {
                         var searchKey = $(this).val().toLowerCase();
                         $('tbody tr').hide().filter(function() {

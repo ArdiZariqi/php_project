@@ -138,6 +138,7 @@ if (
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
                 <script>
                     $(document).ready(function() {
+                        $("#navLinks li:nth-child(7) a").addClass('active');
                         $('.btn-delete').on('click', function(e) {
                             e.preventDefault();
                             var courseId = $(this).data('course-id');
