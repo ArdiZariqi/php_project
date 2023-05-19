@@ -90,7 +90,7 @@ if (
     <body>
       <?php
       include "inc/navbar.php";
-      if ($r_users != 0) {
+      if ($r_users != -1) {
       ?>
         <div class="container mt-5">
           <a href="registrar-office-add.php" class="btn btn-dark">Add New User</a>
