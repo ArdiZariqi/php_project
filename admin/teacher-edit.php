@@ -11,9 +11,10 @@ if (
     include "../DB_connection.php";
     include "data/subject.php";
     include "data/section.php";
+    include "data/class.php";
     include "data/teacher.php";
     $subjects = getAllSubjects($conn);
-    $sections = getAllSections($conn);
+    $classes  = getAllClasses($conn);
 
 
     $teacher_id = $_GET['teacher_id'];
@@ -217,23 +218,29 @@ if (
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label">Section</label>
+            <label class="form-label">Class</label>
             <div class="row row-cols-5">
               <?php
-              $section_ids = str_split(trim($teacher['section']));
-              foreach ($sections as $section) {
+              $class_ids = str_split(trim($teacher['class']));
+              foreach ($classes as $class) {
                 $checked = 0;
-                foreach ($section_ids as $section_id) {
-                  if ($section_id == $section['section_id']) {
+                foreach ($class_ids as $class_id) {
+                  if ($class_id == $class['class_id']) {
                     $checked = 1;
                   }
                 }
               ?>
+              <?php } ?>
+              <?php foreach ($classes as $class) : ?>
                 <div class="col">
-                <input type="radio" name="section" <?php if ($checked) echo "checked"; ?> value="<?= $section['section_id'] ?>">
+                  <input type="checkbox" name="classes[]" value="<?= $class['class_id'] ?>">
+                  <?php
+                  $section = getSectioById($class['section'], $conn);
+                  ?>
                   <?= $section['section'] ?>
                 </div>
-              <?php } ?>
+              <?php endforeach ?>
+
             </div>
           </div>
 
