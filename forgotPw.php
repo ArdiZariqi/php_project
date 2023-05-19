@@ -107,7 +107,7 @@ function checkEmailExists($email)
 	}
 
 	$email = $conn->real_escape_string($email);
-	$sql = "SELECT * FROM teachers WHERE email_address = '$email'";
+	$sql = "SELECT * FROM admin WHERE email_address = '$email'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -145,7 +145,7 @@ function saveVerificationCode($email, $verificationCode)
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "UPDATE teachers SET activation = '$verificationCode' WHERE email_address = '$email'";
+	$sql = "UPDATE admin SET activation = '$verificationCode' WHERE email_address = '$email'";
 
 	if ($conn->query($sql) === true) {
 		echo "Verification code saved successfully.";

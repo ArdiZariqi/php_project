@@ -55,7 +55,7 @@
                     echo "<div class='alert alert-danger' role='alert'>New password and confirm password do not match.</div>";
                 } else {
 
-                    $servername = "localhost: 3307";
+                    $servername = "localhost:3307";
                     $username = "root";
                     $password = "";
                     $dbname = "sms_db";
