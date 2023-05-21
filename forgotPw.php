@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					<label class="form-label">Email Address</label>
 					<input type="email" class="form-control" name="mail" required>
 				</div>
-				<div class="text-center">
+				<div class="text-center mb-4">
 					<button type="submit" class="btn btn-primary" style="width: 200px;">Send Verification Code</button>
 				</div>
 			</form>
